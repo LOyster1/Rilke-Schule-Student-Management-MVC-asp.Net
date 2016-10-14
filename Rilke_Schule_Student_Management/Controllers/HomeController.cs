@@ -26,5 +26,6 @@ namespace Rilke_Schule_Student_Management.Controllers
 
             return View();
         }
+   
     }
 }
