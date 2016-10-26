@@ -161,3 +161,4 @@ C:\Home For Windows\Graphics\Projects\Rilke_Schule_Student_Management\Rilke_Schu
 \\Mac\Home\Documents\Visual Studio 2015\WebSites\Rilke_Schule_Student_Management\Rilke_Schule_Student_Management\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 \\Mac\Home\Documents\Visual Studio 2015\WebSites\Rilke_Schule_Student_Management\Rilke_Schule_Student_Management\obj\Debug\Rilke_Schule_Student_Management.dll
 \\Mac\Home\Documents\Visual Studio 2015\WebSites\Rilke_Schule_Student_Management\Rilke_Schule_Student_Management\obj\Debug\Rilke_Schule_Student_Management.pdb
+\\Mac\Home\Documents\Visual Studio 2015\WebSites\Rilke_Schule_Student_Management\Rilke_Schule_Student_Management\obj\Debug\Rilke_Schule_Student_Management.csprojResolveAssemblyReference.cache
