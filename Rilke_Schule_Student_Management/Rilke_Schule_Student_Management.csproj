@@ -204,11 +204,38 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611050047397_InitialModel.cs" />
+    <Compile Include="Migrations\201611050047397_InitialModel.Designer.cs">
+      <DependentUpon>201611050047397_InitialModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611050123106_InitialModel1.cs" />
+    <Compile Include="Migrations\201611050123106_InitialModel1.Designer.cs">
+      <DependentUpon>201611050123106_InitialModel1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611081921308_CreateStudentTable.cs" />
+    <Compile Include="Migrations\201611081921308_CreateStudentTable.Designer.cs">
+      <DependentUpon>201611081921308_CreateStudentTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611082140330_CreateGuardianTable.cs" />
+    <Compile Include="Migrations\201611082140330_CreateGuardianTable.Designer.cs">
+      <DependentUpon>201611082140330_CreateGuardianTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611082228569_CreateGuardianTable1.cs" />
+    <Compile Include="Migrations\201611082228569_CreateGuardianTable1.Designer.cs">
+      <DependentUpon>201611082228569_CreateGuardianTable1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611082300483_CreateGuardianTable2.cs" />
+    <Compile Include="Migrations\201611082300483_CreateGuardianTable2.Designer.cs">
+      <DependentUpon>201611082300483_CreateGuardianTable2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\FieldTripViewModels.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Guardianship.cs" />
+    <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Student.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -290,6 +317,26 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201611050047397_InitialModel.resx">
+      <DependentUpon>201611050047397_InitialModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611050123106_InitialModel1.resx">
+      <DependentUpon>201611050123106_InitialModel1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611081921308_CreateStudentTable.resx">
+      <DependentUpon>201611081921308_CreateStudentTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611082140330_CreateGuardianTable.resx">
+      <DependentUpon>201611082140330_CreateGuardianTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611082228569_CreateGuardianTable1.resx">
+      <DependentUpon>201611082228569_CreateGuardianTable1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611082300483_CreateGuardianTable2.resx">
+      <DependentUpon>201611082300483_CreateGuardianTable2.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
