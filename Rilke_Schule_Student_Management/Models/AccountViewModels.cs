@@ -102,23 +102,23 @@ namespace Rilke_Schule_Student_Management.Models
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
-        [Required]
-        [StringLength(100, ErrorMessage = "Name Not Found", MinimumLength = 1)]
-        [DataType(DataType.Text)]
-        [Display(Name = "Student First Name")]
-        public string StudentFirstName { get; set; }
+        //[Required]
+        //[StringLength(100, ErrorMessage = "Name Not Found", MinimumLength = 1)]
+        //[DataType(DataType.Text)]
+        //[Display(Name = "Student First Name")]
+        //public string StudentFirstName { get; set; }
 
-        [Required]
-        [StringLength(100, ErrorMessage = "Name Not Found", MinimumLength = 1)]
-        [DataType(DataType.Text)]
-        [Display(Name = "StudenLast Name")]
-        public string StudentLastName { get; set; }
+        //[Required]
+        //[StringLength(100, ErrorMessage = "Name Not Found", MinimumLength = 1)]
+        //[DataType(DataType.Text)]
+        //[Display(Name = "StudenLast Name")]
+        //public string StudentLastName { get; set; }
 
-        [Required]
-        [StringLength(100, ErrorMessage = "Name Not Found", MinimumLength = 1)]
-        [DataType(DataType.DateTime)]
-        [Display(Name = "Studen Date of Birth")]
-        public DateTime? DateOfBirth { get; set; }
+        //[Required]
+        //[StringLength(100, ErrorMessage = "Name Not Found", MinimumLength = 1)]
+        //[DataType(DataType.DateTime)]
+        //[Display(Name = "Studen Date of Birth")]
+        //public DateTime? DateOfBirth { get; set; }
     }
 
     public class ResetPasswordViewModel

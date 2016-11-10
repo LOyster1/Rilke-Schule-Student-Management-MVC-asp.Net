@@ -201,6 +201,7 @@
     <Compile Include="Controllers\FieldTripController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\StudentsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -228,6 +229,10 @@
     <Compile Include="Migrations\201611082300483_CreateGuardianTable2.Designer.cs">
       <DependentUpon>201611082300483_CreateGuardianTable2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611082359488_PopulateStudentTable.cs" />
+    <Compile Include="Migrations\201611082359488_PopulateStudentTable.Designer.cs">
+      <DependentUpon>201611082359488_PopulateStudentTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -238,6 +243,7 @@
     <Compile Include="Models\Student.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\StudentFormViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -303,6 +309,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\FieldTrip\FieldTripManager.cshtml" />
     <Content Include="Views\FieldTrip\AddTrip.cshtml" />
+    <Content Include="Views\Students\AddStudent.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -336,6 +343,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611082300483_CreateGuardianTable2.resx">
       <DependentUpon>201611082300483_CreateGuardianTable2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611082359488_PopulateStudentTable.resx">
+      <DependentUpon>201611082359488_PopulateStudentTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

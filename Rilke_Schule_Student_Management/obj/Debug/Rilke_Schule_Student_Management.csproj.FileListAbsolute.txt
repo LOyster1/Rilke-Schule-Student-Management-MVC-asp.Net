@@ -169,3 +169,4 @@ C:\Home For Windows\Graphics\Projects\Rilke_Schule_Student_Management\Rilke_Schu
 \\Mac\Home\Documents\Visual Studio 2015\WebSites\Rilke_Schule_Student_Management\Rilke_Schule_Student_Management\obj\Debug\Rilke_Schule_Student_Management.Migrations.CreateGuardianTable.resources
 \\Mac\Home\Documents\Visual Studio 2015\WebSites\Rilke_Schule_Student_Management\Rilke_Schule_Student_Management\obj\Debug\Rilke_Schule_Student_Management.Migrations.CreateGuardianTable1.resources
 \\Mac\Home\Documents\Visual Studio 2015\WebSites\Rilke_Schule_Student_Management\Rilke_Schule_Student_Management\obj\Debug\Rilke_Schule_Student_Management.Migrations.CreateGuardianTable2.resources
+\\Mac\Home\Documents\Visual Studio 2015\WebSites\Rilke_Schule_Student_Management\Rilke_Schule_Student_Management\obj\Debug\Rilke_Schule_Student_Management.Migrations.PopulateStudentTable.resources

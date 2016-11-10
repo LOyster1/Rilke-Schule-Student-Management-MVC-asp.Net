@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Rilke_Schule_Student_Management.Models
 {
-    public class Guardianship
+    public class Guardianship//--Class is for connecting parents with students
     {
         
         [Key]
