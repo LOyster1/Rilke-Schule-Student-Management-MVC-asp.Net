@@ -111,13 +111,13 @@ namespace Rilke_Schule_Student_Management.Models
         [Required]
         [StringLength(100, ErrorMessage = "Name Not Found", MinimumLength = 1)]
         [DataType(DataType.Text)]
-        [Display(Name = "StudenLast Name")]
+        [Display(Name = "Student Last Name")]
         public string StudentLastName { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "Name Not Found", MinimumLength = 1)]
         [DataType(DataType.DateTime)]
-        [Display(Name = "Studen Date of Birth")]
+        [Display(Name = "Student Date of Birth")]
         public DateTime? DateOfBirth { get; set; }
     }
 
