@@ -19,9 +19,9 @@ namespace Rilke_Schule_Student_Management.Models
 
         public String FirstName { get; set; }
         public String LastName { get; set; }
-        public String StudentFirstName { get; set; }
-        public String StudentLastName { get; set; }
-        public DateTime DateOfBirth { get; set; } 
+        //public String StudentFirstName { get; set; }
+        //public String StudentLastName { get; set; }
+        //public DateTime DateOfBirth { get; set; } 
           
     }
 

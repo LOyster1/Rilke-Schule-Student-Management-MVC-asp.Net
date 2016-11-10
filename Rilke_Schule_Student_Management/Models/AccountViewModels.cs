@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Rilke_Schule_Student_Management.Models
@@ -118,6 +117,24 @@ namespace Rilke_Schule_Student_Management.Models
         //[StringLength(100, ErrorMessage = "Name Not Found", MinimumLength = 1)]
         //[DataType(DataType.DateTime)]
         //[Display(Name = "Studen Date of Birth")]
+        //public DateTime? DateOfBirth { get; set; }
+
+        //[Required]
+        //[StringLength(100, ErrorMessage = "Name Not Found", MinimumLength = 1)]
+        //[DataType(DataType.Text)]
+        //[Display(Name = "Student First Name")]
+        //public string StudentFirstName { get; set; }
+
+        //[Required]
+        //[StringLength(100, ErrorMessage = "Name Not Found", MinimumLength = 1)]
+        //[DataType(DataType.Text)]
+        //[Display(Name = "Student Last Name")]
+        //public string StudentLastName { get; set; }
+
+        //[Required]
+        //[StringLength(100, ErrorMessage = "Name Not Found", MinimumLength = 1)]
+        //[DataType(DataType.DateTime)]
+        //[Display(Name = "Student Date of Birth")]
         //public DateTime? DateOfBirth { get; set; }
     }
 

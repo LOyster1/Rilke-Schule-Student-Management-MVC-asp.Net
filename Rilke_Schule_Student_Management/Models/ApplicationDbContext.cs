@@ -7,6 +7,7 @@ namespace Rilke_Schule_Student_Management.Models
     {
         public DbSet<Student> Students { get; set; }
         public DbSet<Guardianship> Guardianships { get; set; }
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

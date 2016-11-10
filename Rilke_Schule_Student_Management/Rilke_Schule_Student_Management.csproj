@@ -233,6 +233,14 @@
     <Compile Include="Migrations\201611082359488_PopulateStudentTable.Designer.cs">
       <DependentUpon>201611082359488_PopulateStudentTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611102159180_RegistrationUpdatedModel.cs" />
+    <Compile Include="Migrations\201611102159180_RegistrationUpdatedModel.Designer.cs">
+      <DependentUpon>201611102159180_RegistrationUpdatedModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611102210177_updateASPNetUser.cs" />
+    <Compile Include="Migrations\201611102210177_updateASPNetUser.Designer.cs">
+      <DependentUpon>201611102210177_updateASPNetUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -346,6 +354,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611082359488_PopulateStudentTable.resx">
       <DependentUpon>201611082359488_PopulateStudentTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611102159180_RegistrationUpdatedModel.resx">
+      <DependentUpon>201611102159180_RegistrationUpdatedModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611102210177_updateASPNetUser.resx">
+      <DependentUpon>201611102210177_updateASPNetUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
