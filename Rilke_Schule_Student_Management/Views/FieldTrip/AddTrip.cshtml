@@ -12,41 +12,46 @@
 {
     @Html.AntiForgeryToken()
     <hr />
-    @Html.ValidationSummary("", new { @class = "text-danger" })
     <div class="form-group">
         @Html.LabelFor(m => m.TripName, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @Html.TextBoxFor(m => m.TripName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.TripName)
         </div>
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.SubmitByDate, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.TextBoxFor(m => m.SubmitByDate, new { @class = "form-control" })
+            @Html.TextBoxFor(m => m.SubmitByDate, new { @class = "form-control", placeholder = "MM/dd/yyyy" })
+            @Html.ValidationMessageFor(m => m.SubmitByDate)
         </div>
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.TripDate, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.TextBoxFor(m => m.TripDate, new { @class = "form-control" })
+            @Html.TextBoxFor(m => m.TripDate, new { @class = "form-control", placeholder = "MM/dd/yyyy" })
+            @Html.ValidationMessageFor(m => m.TripDate)
         </div>
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.ChapperoneArrivalTime, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.TextBoxFor(m => m.ChapperoneArrivalTime, new { @class = "form-control" })
+            @Html.TextBoxFor(m => m.ChapperoneArrivalTime, new { @class = "form-control", placeholder = "HH:mm" })
+            @Html.ValidationMessageFor(m => m.ChapperoneArrivalTime)
         </div>
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.DepartureTime, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.TextBoxFor(m => m.DepartureTime, new { @class = "form-control" })
+            @Html.TextBoxFor(m => m.DepartureTime, new { @class = "form-control", placeholder = "HH:mm" })
+            @Html.ValidationMessageFor(m => m.DepartureTime)
         </div>
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.ReturnTime, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.TextBoxFor(m => m.ReturnTime, new { @class = "form-control" })
+            @Html.TextBoxFor(m => m.ReturnTime, new { @class = "form-control", placeholder = "HH:mm" })
+            @Html.ValidationMessageFor(m => m.ReturnTime)
         </div>
     </div>
 
@@ -54,6 +59,7 @@
         @Html.LabelFor(m => m.Transportation, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @Html.TextBoxFor(m => m.Transportation, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Transportation)
         </div>
     </div>
     

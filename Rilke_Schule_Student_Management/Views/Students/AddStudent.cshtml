@@ -16,7 +16,8 @@
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Date_Of_Birth)
-        @Html.TextBoxFor(m => m.Date_Of_Birth, new { @class = "form-control" })
+        @Html.TextBoxFor(m => m.Date_Of_Birth, new { @class = "form-control", placeholder = "MM/dd/yyyy" })
+        @Html.ValidationMessageFor(m => m.Date_Of_Birth)
     </div>
     <button type="submit" value="Add Student" class="btn btn-primary">Add Student</button>
 
