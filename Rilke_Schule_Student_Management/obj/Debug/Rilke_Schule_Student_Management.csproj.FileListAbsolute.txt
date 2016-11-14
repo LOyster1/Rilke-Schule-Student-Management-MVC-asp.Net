@@ -263,3 +263,4 @@ C:\Users\Peter\Documents\GitHub\Rilke-Schule-Student-Management-MVC-asp.Net\Rilk
 C:\Users\Peter\Documents\GitHub\Rilke-Schule-Student-Management-MVC-asp.Net\Rilke_Schule_Student_Management\obj\Debug\Rilke_Schule_Student_Management.csproj.GenerateResource.Cache
 C:\Users\Peter\Documents\GitHub\Rilke-Schule-Student-Management-MVC-asp.Net\Rilke_Schule_Student_Management\obj\Debug\Rilke_Schule_Student_Management.dll
 C:\Users\Peter\Documents\GitHub\Rilke-Schule-Student-Management-MVC-asp.Net\Rilke_Schule_Student_Management\obj\Debug\Rilke_Schule_Student_Management.pdb
+C:\Users\Peter\Documents\GitHub\Rilke-Schule-Student-Management-MVC-asp.Net\Rilke_Schule_Student_Management\obj\Debug\Rilke_Schule_Student_Management.Migrations.AddedCSSPlaceHoldersForAddTripAndAddStudent.resources

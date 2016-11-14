@@ -241,6 +241,10 @@
     <Compile Include="Migrations\201611102210177_updateASPNetUser.Designer.cs">
       <DependentUpon>201611102210177_updateASPNetUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611140016475_AddedCSSPlaceHoldersForAddTripAndAddStudent.cs" />
+    <Compile Include="Migrations\201611140016475_AddedCSSPlaceHoldersForAddTripAndAddStudent.Designer.cs">
+      <DependentUpon>201611140016475_AddedCSSPlaceHoldersForAddTripAndAddStudent.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -360,6 +364,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611102210177_updateASPNetUser.resx">
       <DependentUpon>201611102210177_updateASPNetUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611140016475_AddedCSSPlaceHoldersForAddTripAndAddStudent.resx">
+      <DependentUpon>201611140016475_AddedCSSPlaceHoldersForAddTripAndAddStudent.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
