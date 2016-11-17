@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace Rilke_Schule_Student_Management.Controllers
 {
@@ -13,21 +9,10 @@ namespace Rilke_Schule_Student_Management.Controllers
             return View();
         }
 
-        [Authorize(Roles = "Admin")]
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
         [Authorize(Roles = "Parent")]
-        public ActionResult Contact()
+        public ActionResult Activity()
         {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
-   
     }
 }

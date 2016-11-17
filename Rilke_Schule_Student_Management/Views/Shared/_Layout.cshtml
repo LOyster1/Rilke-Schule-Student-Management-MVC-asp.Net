@@ -22,17 +22,16 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     <!--Parameters: Link Name, View, Controller --->
                     @if (Request.IsAuthenticated)
                     {
                         @Html.AntiForgeryToken()
-                        <li>@Html.ActionLink("Add Student", "AddStudent", "Students")</li>
-                    }
-                    else
-                    {
-
+                        <li>@Html.ActionLink("Activities", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Field Trips", "FieldTripManager", "FieldTrip")</li>
+                        if (User.IsInRole("Parent"))
+                        {
+                            <li>@Html.ActionLink("Manage Student", "AddStudent", "Students")</li>
+                        }
                     }
                 </ul>
                 @Html.Partial("_LoginPartial")

@@ -14,13 +14,14 @@ namespace Rilke_Schule_Student_Management.Controllers
         {
             _context = new ApplicationDbContext();
         }
-
-        [Authorize]
+        
+        [Authorize(Roles = "Parent")]
         public ActionResult AddStudent()
         {
             return View();
         }
-        [Authorize]
+
+        [Authorize(Roles = "Parent")]
         [HttpPost]
         public ActionResult AddStudent(StudentFormViewModel viewModel)
         {
@@ -28,6 +29,7 @@ namespace Rilke_Schule_Student_Management.Controllers
 
             return View();
         }
+        [Authorize(Roles = "Parent")]
         public ActionResult AddGuardianship()
         {
             string sql = "SELECT STUDENT_F_NAME * FROM STUDENT WHERE STUDENT";

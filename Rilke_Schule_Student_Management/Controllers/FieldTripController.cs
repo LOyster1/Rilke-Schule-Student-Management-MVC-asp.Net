@@ -9,10 +9,12 @@ namespace Rilke_Schule_Student_Management.Controllers
     public class FieldTripController : Controller
     {
         // GET: FieldTrip
+        [Authorize]
         public ActionResult FieldTripManager()
         {
             return View();
         }
+        [Authorize(Roles = "Admin")]
         public ActionResult AddTrip()
         {
             return View();

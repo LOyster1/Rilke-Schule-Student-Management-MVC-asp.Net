@@ -10,17 +10,20 @@
 </div>
 
 <div class="row">
-    <div class="col-md-4">
-        <h2>Add Field Trip</h2>
-        <p>
-            Use this to add Field Trip Permission Slips to your class
-        </p>
-        <p><a class="btn btn-default" onclick="location.href='@Url.Action("AddTrip", "FieldTrip")'">Add Trip  &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Edit Field Trips</h2>
-        <p> Manage Current Field Trips</p>
-        <p><a class="btn btn-default" href="#">Edit  &raquo;</a></p>
-    </div>
+    @if (User.IsInRole("Admin"))
+    {
+        <div class="col-md-4">
+                <h2>Add Field Trip</h2>
+                <p>
+                    Use this to add Field Trip Permission Slips to your class
+                </p>
+                <p><a class="btn btn-default" onclick="location.href='@Url.Action("AddTrip", "FieldTrip")'">Add Trip  &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>Edit Field Trips</h2>
+            <p> Manage Current Field Trips</p>
+            <p><a class="btn btn-default" href="#">Edit  &raquo;</a></p>
+        </div>
+    }
 </div>
 

@@ -24,10 +24,13 @@
             <p><a class="btn btn-default" onclick="location.href='@Url.Action("FieldTripManager", "FieldTrip")'">See Field  &raquo;</a></p>
         
          </div>
-        <div class="col-md-4">
-            <h2>Manage Students</h2>
-            <p>Need to add or drop a Student of yours to your account?</p>
-            <p><a class="btn btn-default" href="#">Add/Drop &raquo;</a></p>
-        </div>
+        @if(User.IsInRole("Parent"))
+        {
+            <div class="col-md-4">
+                <h2>Manage Students</h2>
+                <p>Need to add or drop a Student of yours to your account?</p>
+                <p><a class="btn btn-default" onclick="location.href='@Url.Action("AddStudent", "Students")'">Add/Drop &raquo;</a></p>
+            </div>
+        }
     </div>
 }
