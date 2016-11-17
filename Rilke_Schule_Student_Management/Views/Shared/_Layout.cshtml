@@ -25,7 +25,16 @@
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     <!--Parameters: Link Name, View, Controller --->
-                    <li>@Html.ActionLink("Add Student","AddStudent","Students")</li>
+                    @if (Request.IsAuthenticated)
+                    {
+                        @Html.AntiForgeryToken()
+                        <li>@Html.ActionLink("Add Student", "AddStudent", "Students")</li>
+                    }
+                    }
+                    else
+                    {
+
+                    }
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

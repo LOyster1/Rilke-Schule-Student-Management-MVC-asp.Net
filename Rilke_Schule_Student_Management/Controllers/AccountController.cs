@@ -149,7 +149,16 @@ namespace Rilke_Schule_Student_Management.Controllers
 
             if (ModelState.IsValid)
             {//FirstName = model.FirstName, 
-                var user = new ApplicationUser { UserName = model.UserName, Email = model.Email};
+                //var user = new ApplicationUser { UserName = model.UserName, Email = model.Email};
+                var user = new ApplicationUser
+                {
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    UserName = model.UserName,
+                    Email = model.Email,
+                    PasswordHash = model.Password
+                };
+
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
