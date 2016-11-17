@@ -13,6 +13,7 @@ namespace Rilke_Schule_Student_Management.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -20,6 +21,7 @@ namespace Rilke_Schule_Student_Management.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Parent")]
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";

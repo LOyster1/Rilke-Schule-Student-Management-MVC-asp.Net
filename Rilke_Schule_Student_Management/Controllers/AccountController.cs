@@ -162,6 +162,8 @@ namespace Rilke_Schule_Student_Management.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    // New Registered Users are all set to Parent
+                    UserManager.AddToRole(user.Id, "Parent");
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
