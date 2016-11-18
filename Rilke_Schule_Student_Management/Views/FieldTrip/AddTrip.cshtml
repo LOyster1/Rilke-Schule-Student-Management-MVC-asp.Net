@@ -22,35 +22,35 @@
     <div class="form-group">
         @Html.LabelFor(m => m.SubmitByDate, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.EditorFor(m => m.SubmitByDate, new { @class = "form-control"} )
+            @Html.EditorFor(m => m.SubmitByDate, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(m => m.SubmitByDate)
         </div>
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.TripDate, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.TextBoxFor(m => m.TripDate, new { @class = "form-control", placeholder = "MM/dd/yyyy" })
+            @Html.EditorFor(m => m.TripDate, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(m => m.TripDate)
         </div>
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.ChapperoneArrivalTime, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.TextBoxFor(m => m.ChapperoneArrivalTime, new { @class = "form-control", placeholder = "HH:mm" })
+            @Html.EditorFor(m => m.ChapperoneArrivalTime, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(m => m.ChapperoneArrivalTime)
         </div>
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.DepartureTime, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.TextBoxFor(m => m.DepartureTime, new { @class = "form-control", placeholder = "HH:mm" })
+            @Html.EditorFor(m => m.DepartureTime, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(m => m.DepartureTime)
         </div>
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.ReturnTime, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.TextBoxFor(m => m.ReturnTime, new { @class = "form-control", placeholder = "HH:mm" })
+            @Html.EditorFor(m => m.ReturnTime, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(m => m.ReturnTime)
         </div>
     </div>
