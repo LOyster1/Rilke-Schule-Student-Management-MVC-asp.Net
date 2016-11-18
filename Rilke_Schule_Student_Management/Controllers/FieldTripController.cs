@@ -19,5 +19,10 @@ namespace Rilke_Schule_Student_Management.Controllers
         {
             return View();
         }
+        [Authorize(Roles = "Parent")]
+        public ActionResult ViewTrip()
+        {
+            return View();
+        }
     }
 }

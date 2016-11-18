@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewBag.Title = "ViewTrip";
+}
+
+<div class="jumbotron">
+    <h1>View Field Trips <img src="../../images/rilkeSchuleLogo.jpg"></h1>
+    <p class="lead">View class field trips</p>
+</div>
+
+<div>
+    <p>Dear Parent/Guardian</p>
+    <div class="trip_name">
+        <!--<h1><input type="text" name="tripName"></h1>-->
+        <h1>Field Trip Name</h1>
+    </div>
+    <p>
+        All permission slips must be received by #####-Date-Place-Holder-##### or your child will not be able to participate in this field trip.
+
+        Students will be expected to dress according to the Rilke Schule dress code.  Students will be expected to follow ASD and Rilke Schule behavior policies.  Students not behaving appropriately may not be invited to accompany the class on future field trips.
+    </p>
+
+    <!--<div class="text_box">
+            <p>
+                <input type="text" name="tripName">
+            </p>
+        </div>-->
+
+    <p>
+        If you are chosen to chaperone this field trip, the cost will be $#####-Cost-Place-Holder-##### and will be paid directly to your student&apos;s teacher.   Exact change is appreciated or you may write a check payable to Rilke Schule.
+    </p>
+    <p>
+        If an emergency arises on this trip please contact <input type="text" name="emergContact" placeholder="emergency contact name"> at this number <input type="text" name="emeConNum" maxlength="12" placeholder="012-345-6789">.
+    </p>
+    <p>
+        By signing this document, I give permission for my child <input type="text" name="ChildName" placeholder="Child's Name"> to participate in this field trip and for Rilke Schule staff members to seek medical attention for my child in case of an emergency.
+    </p>
+    <p>
+        <!--<input class="pName" type="text" name="parName" placeholder="Printed Name"><input class="pSig" type="text" name="parSig" placeholder="Signature">	<input class="pDate" type="date" name="date" placeholder="MM/DD/YYYY"> -->
+    </p>
+
+    <div class="signBlock">
+        <div class="inputField">
+            <div class="fieldLabel">
+                <input class="pName" type="text" name="parName" placeholder="Printed Name">
+                <div class="pName">Parent/Guardian (Printed Name)</div>
+            </div>
+            <div class="fieldLabel">
+                <input class="pSig" type="text" name="parSig" placeholder="Signature">
+                <div class="pSig">Signature</div>
+            </div>
+            <div class="fieldLabel">
+                <input class="pDate" type="date" name="date" placeholder="MM/DD/YYYY">
+                <div class="pDate">Date</div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <button id="submit" onclick="validateForm()">
+            <!--<button id="submit">-->
+            Submit
+        </button>
+        <!--<input type="submit" name="Submit" value="Submit">-->
+    </div>
+</div>
