@@ -13,6 +13,7 @@ namespace Rilke_Schule_Student_Management.ViewModels
         public string Student_Last_Name { get; set; }
 
         [Required]
+        [DataType(DataType.Date)]
         [Display(Name = "Date Of Birth")]
         public string Date_Of_Birth { get; set; }
     }
