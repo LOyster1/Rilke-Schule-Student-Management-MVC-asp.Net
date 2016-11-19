@@ -16,8 +16,8 @@ namespace Rilke_Schule_Student_Management.Models
         public virtual FieldTrip FieldTrip { get; set; }
 
         [Required]
-        public int Student_Id { get; set; }
-        [ForeignKey("Student_Id"), Column(Order = 2)]
+        public int Student_Number { get; set; }
+        [ForeignKey("Student_Number"), Column(Order = 2)]
         public virtual Student Student { get; set; }
 
         [Required]
