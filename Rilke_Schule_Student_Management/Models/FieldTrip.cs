@@ -11,6 +11,7 @@ namespace Rilke_Schule_Student_Management.Models
         public int FieldTrip_Id { get; set; }
 
         [Required]
+        [Display(Name = "Class Id")]
         public int Class_Id { get; set; }
         [ForeignKey("Class_Id"), Column(Order = 1)]
         public virtual Class Class { get; set; }
