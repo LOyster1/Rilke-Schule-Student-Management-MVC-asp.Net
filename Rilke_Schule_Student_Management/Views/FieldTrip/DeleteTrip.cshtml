@@ -1,0 +1,82 @@
+﻿@model Rilke_Schule_Student_Management.Models.FieldTrip
+
+@{
+    ViewBag.Title = "Delete Field Trip";
+}
+
+<h2>Delete Field Trip</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>FieldTrip</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Class.Class_Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Class.Class_Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TripName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TripName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SubmitByDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SubmitByDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TripDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TripDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ChapperoneArrivalTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ChapperoneArrivalTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DepartureTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DepartureTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReturnTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReturnTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Transportation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Transportation)
+        </dd>
+
+    </dl>
+
+            @Html.ActionLink("ConfirmDelete", "FieldTrip", new { id = Model.FieldTrip_Id }) |
+            @Html.ActionLink("Back to List", "EditTrip")
+</div>

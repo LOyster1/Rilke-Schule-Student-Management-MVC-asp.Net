@@ -7,6 +7,7 @@ namespace Rilke_Schule_Student_Management.Models
     {
         [Key]
         [Required]
+        [Display(Name = "Class Id")]
         public int Class_Id { get; set; }
 
         [Required]

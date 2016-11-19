@@ -67,7 +67,32 @@ namespace Rilke_Schule_Student_Management.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult EditTrip()
         {
-            return View();
+            ApplicationDbContext db = new ApplicationDbContext();
+            return View(db.FieldTrips.ToList());
+        }
+        
+        [Authorize(Roles = "Admin")]
+        public ActionResult DeleteTrip(int id)
+        {
+            ApplicationDbContext db = new ApplicationDbContext();
+            return View(db.FieldTrips.Find(id));
+        }
+
+        // work in progress wont delete
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public ActionResult ConfirmDelete(int id)
+        {
+            ApplicationDbContext db = new ApplicationDbContext();
+            FieldTrip tempFT = db.FieldTrips.Find(id);
+            if(tempFT == null)
+            {
+                return RedirectToAction("EditTrip");
+            }
+            db.FieldTrips.Remove(tempFT);
+            db.SaveChanges();
+
+            return RedirectToAction("EditTrip");
         }
 
         [Authorize(Roles = "Parent")]

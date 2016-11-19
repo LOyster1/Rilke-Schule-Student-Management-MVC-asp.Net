@@ -4,7 +4,8 @@
 }
 
 <div class="jumbotron">
-    <h1>Field Trip Management<img src="../../images/rilkeSchuleLogo.jpg"></h1>
+    <img src="../../images/rilkeSchuleLogo.jpg">
+    <h1>Field Trip Management</h1>
     <p class="lead">Manage class field trips</p>
 
 </div>
@@ -23,6 +24,11 @@
             <h2>Edit Field Trips</h2>
             <p> Manage Current Field Trips</p>
             <p><a class="btn btn-default" onclick="location.href='@Url.Action("EditTrip", "FieldTrip")'">Edit  &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>View</h2>
+            <p> View Current Field Trips</p>
+            <p><a class="btn btn-default" onclick="location.href='@Url.Action("Test", "FieldTrip")'">View  &raquo;</a></p>
         </div>
     }
     @if (User.IsInRole("Parent"))
