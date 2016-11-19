@@ -12,6 +12,8 @@ namespace Rilke_Schule_Student_Management.Models
 
         public DbSet<Class> Classes { get; set; }
 
+        public DbSet<FieldTrip> FieldTrip { get; set; }
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
