@@ -11,6 +11,6 @@ namespace Rilke_Schule_Student_Management.Models
 
         [Required]
         [Display(Name = "Teacher Name")]
-        public String Name;
+        public string Name { get; set; }
     }
 }
