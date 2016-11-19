@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 
 namespace Rilke_Schule_Student_Management.Models
@@ -8,6 +9,11 @@ namespace Rilke_Schule_Student_Management.Models
     {
         [Key]
         public int FieldTrip_Id { get; set; }
+
+        [Required]
+        public int Class_Id { get; set; }
+        [ForeignKey("Class_Id"), Column(Order = 1)]
+        public virtual Class Class { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "Must enter a Trip Name", MinimumLength = 1)]
