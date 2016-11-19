@@ -10,8 +10,8 @@ namespace Rilke_Schule_Student_Management.Models
         public int Class_Id { get; set; }
 
         [Required]
-        public string UserName { get; set; }
-        [ForeignKey("UserName"), Column(Order = 1)]
+        public int Teacher_ID { get; set; }
+        [ForeignKey("Teacher_Id"), Column(Order = 1)]
         public virtual Teacher Teacher { get; set; }
 
         [Required]
