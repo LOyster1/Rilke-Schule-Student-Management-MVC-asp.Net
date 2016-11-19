@@ -22,7 +22,7 @@
         <div class="col-md-4">
             <h2>Edit Field Trips</h2>
             <p> Manage Current Field Trips</p>
-            <p><a class="btn btn-default" href="#">Edit  &raquo;</a></p>
+            <p><a class="btn btn-default" onclick="location.href='@Url.Action("EditTrip", "FieldTrip")'">Edit  &raquo;</a></p>
         </div>
     }
     @if (User.IsInRole("Parent"))

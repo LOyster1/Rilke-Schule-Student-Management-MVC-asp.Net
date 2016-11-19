@@ -1,6 +1,9 @@
-﻿using System;
+﻿using Rilke_Schule_Student_Management.Models;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -14,15 +17,70 @@ namespace Rilke_Schule_Student_Management.Controllers
         {
             return View();
         }
+
         [Authorize(Roles = "Admin")]
         public ActionResult AddTrip()
         {
             return View();
         }
+        
+        [Authorize(Roles = "Admin")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddTrip(FieldTrip model)
+        {
+            if (ModelState.IsValid)
+            {
+                FieldTrip FieldTripEntity = new FieldTrip
+                {
+                    TripName = model.TripName,
+                    SubmitByDate = model.SubmitByDate,
+                    TripDate = model.TripDate,
+                    ChapperoneArrivalTime = model.ChapperoneArrivalTime,
+                    DepartureTime = model.DepartureTime,
+                    ReturnTime = model.ReturnTime,
+                    Transportation = model.Transportation
+                };
+
+                ApplicationDbContext db = new ApplicationDbContext();
+                using (db)
+                {
+                    try
+                    {
+                        db.FieldTrips.Add(model);
+                        int result = db.SaveChanges();
+                        if(result > 0)
+                        {
+                            return RedirectToAction("EditTrip", "FieldTrip");
+                        }
+                    }
+                    catch (DbEntityValidationException e)
+                    {
+
+                    }
+                }
+            }
+
+            return View("Trip Not Added");
+        }
+
+        [Authorize(Roles = "Admin")]
+        public ActionResult EditTrip()
+        {
+            return View();
+        }
+
+        [Authorize(Roles = "Parent")]
+        public ActionResult ViewPermissionSlip()
+        {
+            return View();
+        }
+
         [Authorize(Roles = "Parent")]
         public ActionResult ViewTrip()
         {
-            return View();
+            ApplicationDbContext db = new ApplicationDbContext();
+            return View(db.Students.ToList());
         }
     }
 }
