@@ -26,9 +26,9 @@
             <p><a class="btn btn-default" onclick="location.href='@Url.Action("EditTrip", "FieldTrip")'">Edit  &raquo;</a></p>
         </div>
         <div class="col-md-4">
-            <h2>View</h2>
+            <h2>View Field Trips</h2>
             <p> View Current Field Trips</p>
-            <p><a class="btn btn-default" onclick="location.href='@Url.Action("Test", "FieldTrip")'">View  &raquo;</a></p>
+            <p><a class="btn btn-default" onclick="location.href='@Url.Action("ViewAllTrips", "FieldTrip")'">View  &raquo;</a></p>
         </div>
     }
     @if (User.IsInRole("Parent"))

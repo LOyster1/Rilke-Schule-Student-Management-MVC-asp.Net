@@ -11,6 +11,8 @@ namespace Rilke_Schule_Student_Management.Controllers
 {
     public class FieldTripController : Controller
     {
+        ApplicationDbContext db = new ApplicationDbContext();
+
         // GET: FieldTrip
         [Authorize]
         public ActionResult FieldTripManager()
@@ -21,6 +23,10 @@ namespace Rilke_Schule_Student_Management.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult AddTrip()
         {
+            //Send to the view, the userTypeList
+            IEnumerable<SelectListItem> classId = new SelectList(db.Classes.ToList(), "Class_Id", "Class_Id");
+            ViewData["classId"] = classId;
+
             return View();
         }
         
@@ -41,8 +47,7 @@ namespace Rilke_Schule_Student_Management.Controllers
                     ReturnTime = model.ReturnTime,
                     Transportation = model.Transportation
                 };
-
-                ApplicationDbContext db = new ApplicationDbContext();
+                
                 using (db)
                 {
                     try
@@ -67,32 +72,27 @@ namespace Rilke_Schule_Student_Management.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult EditTrip()
         {
-            ApplicationDbContext db = new ApplicationDbContext();
             return View(db.FieldTrips.ToList());
         }
         
         [Authorize(Roles = "Admin")]
         public ActionResult DeleteTrip(int id)
         {
-            ApplicationDbContext db = new ApplicationDbContext();
             return View(db.FieldTrips.Find(id));
         }
-
-        // work in progress wont delete
-        [HttpPost]
+        
         [Authorize(Roles = "Admin")]
         public ActionResult ConfirmDelete(int id)
         {
-            ApplicationDbContext db = new ApplicationDbContext();
-            FieldTrip tempFT = db.FieldTrips.Find(id);
-            if(tempFT == null)
+            FieldTrip delete = db.FieldTrips.Find(id);
+            if (delete == null)
             {
-                return RedirectToAction("EditTrip");
+                return RedirectToAction("EditTrip", "FieldTrip");
             }
-            db.FieldTrips.Remove(tempFT);
+            db.FieldTrips.Remove(delete);
             db.SaveChanges();
 
-            return RedirectToAction("EditTrip");
+            return RedirectToAction("EditTrip", "FieldTrip");
         }
 
         [Authorize(Roles = "Parent")]
@@ -104,8 +104,41 @@ namespace Rilke_Schule_Student_Management.Controllers
         [Authorize(Roles = "Parent")]
         public ActionResult ViewTrip()
         {
-            ApplicationDbContext db = new ApplicationDbContext();
-            return View(db.Students.ToList());
+            return View(db.FieldTrips.ToList());
+        }
+
+        [Authorize(Roles = "Admin")]
+        public ActionResult ViewAllTrips()
+        {
+            return View(db.FieldTrips.ToList());
+        }
+
+        [Authorize(Roles = "Admin")]
+        public ActionResult EditTripDetails(int id)
+        {
+            //Send to the view, the userTypeList
+            IEnumerable<SelectListItem> classId = new SelectList(db.Classes.ToList(), "Class_Id", "Class_Id");
+            ViewData["classId"] = classId;
+
+            return View(db.FieldTrips.Find(id));
+        }
+
+        [Authorize(Roles = "Admin")]
+        public ActionResult ConfirmEditTripDetails(FieldTrip ft)
+        {
+            var update = db.FieldTrips.Find(ft.FieldTrip_Id);
+            update.Class_Id = ft.Class_Id;
+            update.TripName = ft.TripName;
+            update.SubmitByDate = ft.SubmitByDate;
+            update.TripDate = ft.TripDate;
+            update.ChapperoneArrivalTime = ft.ChapperoneArrivalTime;
+            update.DepartureTime = ft.DepartureTime;
+            update.ReturnTime = ft.ReturnTime;
+            update.Transportation = ft.Transportation;
+
+            db.SaveChanges();
+
+            return RedirectToAction("EditTrip", "FieldTrip");
         }
     }
 }

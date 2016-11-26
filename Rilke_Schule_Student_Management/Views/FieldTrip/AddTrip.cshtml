@@ -66,7 +66,7 @@
     <div class="form-group">
         @Html.LabelFor(m => m.Class_Id, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Class_Id, new { @class = "form-control" })
+            @Html.DropDownListFor(m => m.Class_Id, ViewData["classId"] as IEnumerable<SelectListItem>, htmlAttributes: new { @class = "form-control" })
             @Html.ValidationMessageFor(m => m.Class_Id)
         </div>
     </div>
