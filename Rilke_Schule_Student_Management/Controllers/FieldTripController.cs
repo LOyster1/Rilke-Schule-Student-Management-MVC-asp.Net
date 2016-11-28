@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 
 namespace Rilke_Schule_Student_Management.Controllers
 {
@@ -104,7 +105,28 @@ namespace Rilke_Schule_Student_Management.Controllers
         [Authorize(Roles = "Parent")]
         public ActionResult ViewTrip()
         {
-            return View(db.FieldTrips.ToList());
+            var FieldTripIds = new List<int>();
+            var userId = User.Identity.GetUserId();
+            var studentId = db.Guardianships.Where(i => i.UserName == userId);
+            foreach(var item in studentId)
+            {
+                var classes = db.Classes.Where(i => i.Student_Number == item.Student_Number);
+                foreach (var i in classes)
+                {
+                    var trips = from m in db.FieldTrips
+                                where m.Class_Id == i.Class_Id
+                                select m;
+                    foreach(var t in trips)
+                    {
+                        FieldTripIds.Add(t.FieldTrip_Id);
+                    }
+                }
+            }
+            var trip = from m in db.FieldTrips
+                        where FieldTripIds.Contains(m.FieldTrip_Id)
+                        select m;
+
+            return View(trip.ToList());
         }
 
         [Authorize(Roles = "Admin")]

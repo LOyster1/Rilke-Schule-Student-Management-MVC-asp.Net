@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Rilke_Schule_Student_Management.Models.FieldTrip>
+
+@{
+    ViewBag.Title = "ViewAllTrips";
+}
+
+<h2>ViewAllTrips</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Class.Class_Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TripName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SubmitByDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TripDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ChapperoneArrivalTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DepartureTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReturnTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Transportation)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Class.Class_Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TripName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SubmitByDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TripDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ChapperoneArrivalTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DepartureTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReturnTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Transportation)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.FieldTrip_Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.FieldTrip_Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.FieldTrip_Id })
+        </td>
+    </tr>
+}
+
+</table>
