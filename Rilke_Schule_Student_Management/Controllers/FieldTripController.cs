@@ -1,12 +1,9 @@
-﻿using Rilke_Schule_Student_Management.Models;
-using System;
+﻿using Microsoft.AspNet.Identity;
+using Rilke_Schule_Student_Management.Models;
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
 using System.Linq;
-using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
 
 namespace Rilke_Schule_Student_Management.Controllers
 {
@@ -114,7 +111,7 @@ namespace Rilke_Schule_Student_Management.Controllers
                 foreach (var i in classes)
                 {
                     var trips = from m in db.FieldTrips
-                                where m.Class_Id == i.Class_Id
+                                where m.Class_Id.Equals(i.Class_Id)//---Levi Changed to reflect String
                                 select m;
                     foreach(var t in trips)
                     {
