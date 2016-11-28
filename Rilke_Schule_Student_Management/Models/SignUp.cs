@@ -19,15 +19,13 @@ namespace Rilke_Schule_Student_Management.Models
         public int Student_Number { get; set; }
         [ForeignKey("Student_Number"), Column(Order = 2)]
         public virtual Student Student { get; set; }
-
-        [Required]
-        [StringLength(100, ErrorMessage = "Must enter a Chaperone Name", MinimumLength = 1)]
+        
+        [StringLength(100, MinimumLength = 1)]
         [DataType(DataType.Text)]
         [Display(Name = "Chaperone Name")]
         public string Chaperone_Name { get; set; }
-
-        [Required]
-        [StringLength(100, ErrorMessage = "Must enter a Chaperone Contact Number", MinimumLength = 1)]
+        
+        [StringLength(100, MinimumLength = 1)]
         [DataType(DataType.Text)]
         [Display(Name = "Chaperone Contact Number")]
         public string Chaperone_Contact_Number { get; set; }

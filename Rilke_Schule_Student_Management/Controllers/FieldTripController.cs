@@ -36,37 +36,19 @@ namespace Rilke_Schule_Student_Management.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult AddTrip(FieldTrip model)
         {
-            if (ModelState.IsValid)
+            try
             {
-                FieldTrip FieldTripEntity = new FieldTrip
+                db.FieldTrips.Add(model);
+                int result = db.SaveChanges();
+                if(result > 0)
                 {
-                    TripName = model.TripName,
-                    SubmitByDate = model.SubmitByDate,
-                    TripDate = model.TripDate,
-                    ChapperoneArrivalTime = model.ChapperoneArrivalTime,
-                    DepartureTime = model.DepartureTime,
-                    ReturnTime = model.ReturnTime,
-                    Transportation = model.Transportation
-                };
-                
-                using (db)
-                {
-                    try
-                    {
-                        db.FieldTrips.Add(model);
-                        int result = db.SaveChanges();
-                        if(result > 0)
-                        {
-                            return RedirectToAction("EditTrip", "FieldTrip");
-                        }
-                    }
-                    catch (DbEntityValidationException e)
-                    {
-
-                    }
+                    return RedirectToAction("EditTrip", "FieldTrip");
                 }
             }
+            catch (DbEntityValidationException e)
+            {
 
+            }
             return View("Trip Not Added");
         }
 
@@ -97,9 +79,35 @@ namespace Rilke_Schule_Student_Management.Controllers
         }
 
         [Authorize(Roles = "Parent")]
-        public ActionResult ViewPermissionSlip()
+        public ActionResult ViewPermissionSlip(int id)
         {
+            ViewBag.su = new SignUp();
+            ViewBag.trip = db.FieldTrips.Find(id);
+
             return View();
+        }
+
+        [Authorize(Roles = "Parent")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ViewPermissionSlip(SignUp model)
+        {
+            string notAdded = "Trip Not Added";
+            model.Student = db.Students.Find(4);
+            try
+            {
+                db.SignUps.Add(model);
+                int result = db.SaveChanges();
+                if (result > 0)
+                {
+                    return RedirectToAction("ViewTrip", "FieldTrip");
+                }
+            }
+            catch (DbEntityValidationException e)
+            {
+
+            }
+            return View(notAdded);
         }
 
         [Authorize(Roles = "Parent")]
