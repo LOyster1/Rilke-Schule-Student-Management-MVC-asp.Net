@@ -30,6 +30,11 @@ namespace Rilke_Schule_Student_Management.Controllers
             return View();
         }
         [Authorize(Roles = "Parent")]
+        public ActionResult ManageStudent()
+        {
+            return View();
+        }
+        [Authorize(Roles = "Parent")]
         public ActionResult AddGuardianship()
         {
             string sql = "SELECT STUDENT_F_NAME * FROM STUDENT WHERE STUDENT";

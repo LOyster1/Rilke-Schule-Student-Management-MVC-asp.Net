@@ -8,6 +8,7 @@ namespace Rilke_Schule_Student_Management.Models
     {
         [Key]
         [Column(Order =2)]
+        [Display(Name = "Student Number")]
         public int Student_Number { get; set; }
 
         [Required]

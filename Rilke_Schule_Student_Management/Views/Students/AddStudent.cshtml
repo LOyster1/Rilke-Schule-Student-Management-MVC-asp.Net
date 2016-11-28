@@ -1,15 +1,15 @@
-﻿@model Rilke_Schule_Student_Management.ViewModels.StudentFormViewModel
+﻿@model Rilke_Schule_Student_Management.Models.student
 @{
     ViewBag.Title = "Add Student";
     //Layout = "~/Views/Shared/Layout.cshtml";
 }
 
-<h2>AddStudent</h2>
+<h2>Add Student</h2>
 <form>
     <div class="form-group">
         @Html.LabelFor(m =>m.Student_First_Name)
         @Html.TextBoxFor(m=>m.Student_First_Name, new { @class ="form-control" })
-        @Html.ValidationMessageFor(m => m.Student_Last_Name)
+        @Html.ValidationMessageFor(m => m.Student_First_Name)
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Student_Last_Name)
