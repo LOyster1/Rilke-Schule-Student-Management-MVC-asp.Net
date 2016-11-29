@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Rilke_Schule_Student_Management.Models.Student>
+
+@{
+    ViewBag.Title = "Manage Student";
+}
+
+<h2>Manage Student</h2>
+
+<p>
+    @Html.ActionLink("Create New", "AddStudent")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Student_Number)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Stud_F_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Stud_L_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date_Of_Birth)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Student_Number)
+            </td>
+        </tr>
+    }
+
+</table>

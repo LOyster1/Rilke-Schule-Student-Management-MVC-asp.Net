@@ -59,6 +59,11 @@ namespace Rilke_Schule_Student_Management.Controllers
             return View();
         }
         [Authorize(Roles = "Parent")]
+        public ActionResult ManageStudent()
+        {
+            return View();
+        }
+        [Authorize(Roles = "Parent")]
         public ActionResult AddGuardianship()
         {
 
