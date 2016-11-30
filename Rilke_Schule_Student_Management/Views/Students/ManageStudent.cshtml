@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Rilke_Schule_Student_Management.Models.Student>
+﻿@model Rilke_Schule_Student_Management.Models.Student
 
 @{
     ViewBag.Title = "Manage Student";
@@ -12,9 +12,6 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Student_Number)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Stud_F_Name)
         </th>
         <th>
@@ -25,14 +22,6 @@
         </th>
         <th></th>
     </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Student_Number)
-            </td>
-        </tr>
-    }
+    
 
 </table>
