@@ -12,7 +12,7 @@ namespace Rilke_Schule_Student_Management.Models
 
         [Required]
         [Display(Name = "Class Id")]
-        public int Class_Id { get; set; }
+        public string Class_Id { get; set; }//---Changed to string
         [ForeignKey("Class_Id"), Column(Order = 1)]
         public virtual Class Class { get; set; }
 

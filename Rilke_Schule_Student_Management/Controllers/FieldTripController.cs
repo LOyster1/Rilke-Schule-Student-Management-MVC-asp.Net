@@ -180,7 +180,7 @@ namespace Rilke_Schule_Student_Management.Controllers
         {            
             // Queryable list of classes with a matching student_number matching the student numbers from the guardian variable.
             var classes = from model in db.Classes
-                          where model.Student_Number == id
+                          where model.Student_Number.Equals(id)
                           select model.Class_Id;
 
             var fieldTrips = from m in db.FieldTrips
