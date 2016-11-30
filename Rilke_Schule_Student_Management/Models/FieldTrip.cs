@@ -12,7 +12,7 @@ namespace Rilke_Schule_Student_Management.Models
 
         [Required]
         [Display(Name = "Class Id")]
-        public int Class_Id { get; set; }
+        public string Class_Id { get; set; }//---Changed to string
         [ForeignKey("Class_Id"), Column(Order = 1)]
         public virtual Class Class { get; set; }
 
@@ -53,6 +53,9 @@ namespace Rilke_Schule_Student_Management.Models
         [Display(Name = "Transportation Provided By")]
         public string Transportation { get; set; }
 
-        
+        [Required]
+        [DataType(DataType.Currency)]
+        [Display(Name = "Chapperone Cost")]
+        public float? ChapperoneCost { get; set; }
     }
 }

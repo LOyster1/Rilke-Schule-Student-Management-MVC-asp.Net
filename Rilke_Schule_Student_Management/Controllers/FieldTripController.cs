@@ -21,6 +21,8 @@ namespace Rilke_Schule_Student_Management.Controllers
             return View();
         }
 
+        //------------------------- Admin -------------------------//
+
         [Authorize(Roles = "Admin")]
         public ActionResult AddTrip()
         {
@@ -30,7 +32,7 @@ namespace Rilke_Schule_Student_Management.Controllers
 
             return View();
         }
-        
+
         [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -40,7 +42,7 @@ namespace Rilke_Schule_Student_Management.Controllers
             {
                 db.FieldTrips.Add(model);
                 int result = db.SaveChanges();
-                if(result > 0)
+                if (result > 0)
                 {
                     return RedirectToAction("EditTrip", "FieldTrip");
                 }
@@ -57,13 +59,13 @@ namespace Rilke_Schule_Student_Management.Controllers
         {
             return View(db.FieldTrips.ToList());
         }
-        
+
         [Authorize(Roles = "Admin")]
         public ActionResult DeleteTrip(int id)
         {
             return View(db.FieldTrips.Find(id));
         }
-        
+
         [Authorize(Roles = "Admin")]
         public ActionResult ConfirmDelete(int id)
         {
@@ -76,65 +78,6 @@ namespace Rilke_Schule_Student_Management.Controllers
             db.SaveChanges();
 
             return RedirectToAction("EditTrip", "FieldTrip");
-        }
-
-        [Authorize(Roles = "Parent")]
-        public ActionResult ViewPermissionSlip(int id)
-        {
-            ViewBag.su = new SignUp();
-            ViewBag.trip = db.FieldTrips.Find(id);
-
-            return View();
-        }
-
-        [Authorize(Roles = "Parent")]
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult ViewPermissionSlip(SignUp model)
-        {
-            string notAdded = "Trip Not Added";
-            model.Student = db.Students.Find(4);
-            try
-            {
-                db.SignUps.Add(model);
-                int result = db.SaveChanges();
-                if (result > 0)
-                {
-                    return RedirectToAction("ViewTrip", "FieldTrip");
-                }
-            }
-            catch (DbEntityValidationException e)
-            {
-
-            }
-            return View(notAdded);
-        }
-
-        [Authorize(Roles = "Parent")]
-        public ActionResult ViewTrip()
-        {
-            var FieldTripIds = new List<int>();
-            var userId = User.Identity.GetUserId();
-            var studentId = db.Guardianships.Where(i => i.UserName == userId);
-            foreach(var item in studentId)
-            {
-                var classes = db.Classes.Where(i => i.Student_Number == item.Student_Number);
-                foreach (var i in classes)
-                {
-                    var trips = from m in db.FieldTrips
-                                where m.Class_Id == i.Class_Id
-                                select m;
-                    foreach(var t in trips)
-                    {
-                        FieldTripIds.Add(t.FieldTrip_Id);
-                    }
-                }
-            }
-            var trip = from m in db.FieldTrips
-                        where FieldTripIds.Contains(m.FieldTrip_Id)
-                        select m;
-
-            return View(trip.ToList());
         }
 
         [Authorize(Roles = "Admin")]
@@ -170,5 +113,118 @@ namespace Rilke_Schule_Student_Management.Controllers
 
             return RedirectToAction("EditTrip", "FieldTrip");
         }
+
+        //------------------------- Parent -------------------------//
+
+        [Authorize(Roles = "Parent")]
+        public ActionResult SelectStudent()
+        {
+            var userId = User.Identity.GetUserId();
+
+            // Queryable list of Guardianships with a matching username and to the user in session.
+            var studentId = from m in db.Guardianships
+                       where m.Parent.Id == userId
+                       select m.Student_Number;
+            
+            var students = from s in db.Students
+                           where studentId.Contains(s.Student_Number)
+                           select s;
+
+            return View(students.ToList());
+        }
+
+        [Authorize(Roles = "Parent")]
+        public ActionResult ViewPermissionSlip(int id)
+        {
+            ViewBag.trip = db.FieldTrips.Find(id);
+            ViewBag.SubmitByDate = db.FieldTrips.Find(id).SubmitByDate.Value.ToLongDateString();
+            ViewBag.TripDate = db.FieldTrips.Find(id).TripDate.Value.Date.ToLongDateString();
+            ViewBag.DepartureTime = db.FieldTrips.Find(id).DepartureTime.Value.ToShortTimeString();
+            ViewBag.ChapperoneArrivalTime = db.FieldTrips.Find(id).ChapperoneArrivalTime.Value.ToShortTimeString();
+            ViewBag.ReturnTime = db.FieldTrips.Find(id).ReturnTime.Value.ToShortTimeString();
+            ViewBag.id = id;
+
+            return View();
+        }
+
+        [Authorize(Roles = "Parent")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ViewPermissionSlip(SignUp model)
+        {
+            string notAdded = "Trip Not Added";
+
+            // Just forces it to find the student with id of 4. Needs to be changed.
+            model.Student = db.Students.Find(4);
+
+            //model.FieldTrip_Id = 
+
+            try
+            {
+                db.SignUps.Add(model);
+                int result = db.SaveChanges();
+                if (result > 0)
+                {
+                    return RedirectToAction("ViewTrip", "FieldTrip");
+                }
+            }
+            catch (DbEntityValidationException e)
+            {
+
+            }
+            return View(notAdded);
+        }
+
+        [Authorize(Roles = "Parent")]
+        public ActionResult ViewTrip(int id)
+        {            
+            // Queryable list of classes with a matching student_number matching the student numbers from the guardian variable.
+            var classes = from model in db.Classes
+                          where model.Student_Number.Equals(id)
+                          select model.Class_Id;
+
+            var fieldTrips = from m in db.FieldTrips
+                           where classes.Contains(m.Class_Id)
+                           select m;
+
+            return View(fieldTrips.ToList());
+        }
+
+        //    [Authorize(Roles = "Parent")]
+        //    public ActionResult ViewTrip()
+        //    {
+        //        var FieldTripIds = new List<int>();
+        //        var userId = User.Identity.GetUserId();
+
+        //        // Queryable list of Guardianships with a matching username and to the user in session.
+        //        var guardian = db.Guardianships.Where(i => i.UserName == userId);
+
+        //        // looping thorugh the guardianships with the matching usernames
+        //        foreach (var item in guardian)
+        //        {
+        //            // Queryable list of classes with a matching student_number matching the student numbers from the guardian variable.
+        //            var classes = db.Classes.Where(i => i.Student_Number == item.Student_Number);
+
+        //            // Looping through the classes
+        //            foreach (var i in classes)
+        //            {
+        //                // Finding the FieldTrips associated with the classes
+        //                var trips = from m in db.FieldTrips
+        //                            where m.Class_Id == i.Class_Id
+        //                            select m;
+        //                // Adding each FieldTrip_Id to the FieldTripIds list
+        //                foreach (var t in trips)
+        //                {
+        //                    FieldTripIds.Add(t.FieldTrip_Id);
+        //                }
+        //            }
+        //            //studentFieldtrips.Add(FieldTripIds);
+        //        }
+        //        var trip = from m in db.FieldTrips
+        //                   where FieldTripIds.Contains(m.FieldTrip_Id)
+        //                   select m;
+
+        //        return View(trip.ToList());
+        //    }
     }
 }
