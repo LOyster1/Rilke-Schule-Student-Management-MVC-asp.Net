@@ -53,6 +53,9 @@ namespace Rilke_Schule_Student_Management.Models
         [Display(Name = "Transportation Provided By")]
         public string Transportation { get; set; }
 
-        
+        [Required]
+        [DataType(DataType.Currency)]
+        [Display(Name = "Chapperone Cost")]
+        public float? ChapperoneCost { get; set; }
     }
 }

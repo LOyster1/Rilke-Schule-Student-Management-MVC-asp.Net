@@ -41,12 +41,15 @@ namespace Rilke_Schule_Student_Management.Models
         [DataType(DataType.Text)]
         [Display(Name = "Emergency Contact Number")]
         public string Emergency_Contact_Number { get; set; }
-
-
+        
         [Required]
         [DataType(DataType.Date)]
         [Display(Name = "Date Signed")]
         public DateTime? Date_Signed { get; set; }
 
+        [Required]
+        [DataType(DataType.Text)]
+        [Display(Name = "Printed Name")]
+        public string Printed_Name { get; set; }
     }
 }
