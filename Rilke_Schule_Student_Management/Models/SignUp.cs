@@ -19,7 +19,11 @@ namespace Rilke_Schule_Student_Management.Models
         public int Student_Number { get; set; }
         [ForeignKey("Student_Number"), Column(Order = 2)]
         public virtual Student Student { get; set; }
-        
+
+        [Required]
+        [DataType(DataType.Text)]
+        public int UserId { get; set; }
+
         [StringLength(100, MinimumLength = 1)]
         [DataType(DataType.Text)]
         [Display(Name = "Chaperone Name")]

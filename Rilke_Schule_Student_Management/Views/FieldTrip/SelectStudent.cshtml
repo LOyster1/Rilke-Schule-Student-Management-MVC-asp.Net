@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Rilke_Schule_Student_Management.Models.Student>
+
+@{
+    ViewBag.Title = "Select A Student To View Their Field Trips";
+}
+
+<h2>SelectStudent</h2>
+
+<p>
+    @Html.ActionLink("Back", "FieldTripManager")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Stud_F_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Stud_L_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date_Of_Birth)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Stud_F_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Stud_L_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date_Of_Birth)
+        </td>
+        <td>
+            @using (Html.BeginForm("ViewTrip", "FieldTrip", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.TextBoxFor(modelItem => item.Student_Number, htmlAttributes: new { @name="studentId", @Value = item.Student_Number, @class = "hidden", @readonly = "readonly" })
+                //<input type="submit" class="btn btn-default" value="View Field Trips" />
+                @Html.ActionLink("View Field Trips", "ViewTrip", "FieldTrip", new { studentId = item.Student_Number }, null)
+            }
+        </td>
+    </tr>
+}
+
+</table>

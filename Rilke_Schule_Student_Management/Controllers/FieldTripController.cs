@@ -105,6 +105,7 @@ namespace Rilke_Schule_Student_Management.Controllers
             update.SubmitByDate = ft.SubmitByDate;
             update.TripDate = ft.TripDate;
             update.ChapperoneArrivalTime = ft.ChapperoneArrivalTime;
+            update.ChapperoneCost = ft.ChapperoneCost;
             update.DepartureTime = ft.DepartureTime;
             update.ReturnTime = ft.ReturnTime;
             update.Transportation = ft.Transportation;
@@ -134,15 +135,19 @@ namespace Rilke_Schule_Student_Management.Controllers
         }
 
         [Authorize(Roles = "Parent")]
-        public ActionResult ViewPermissionSlip(int id)
+        public ActionResult ViewPermissionSlip(int tripId, int studentId)
         {
-            ViewBag.trip = db.FieldTrips.Find(id);
-            ViewBag.SubmitByDate = db.FieldTrips.Find(id).SubmitByDate.Value.ToLongDateString();
-            ViewBag.TripDate = db.FieldTrips.Find(id).TripDate.Value.Date.ToLongDateString();
-            ViewBag.DepartureTime = db.FieldTrips.Find(id).DepartureTime.Value.ToShortTimeString();
-            ViewBag.ChapperoneArrivalTime = db.FieldTrips.Find(id).ChapperoneArrivalTime.Value.ToShortTimeString();
-            ViewBag.ReturnTime = db.FieldTrips.Find(id).ReturnTime.Value.ToShortTimeString();
-            ViewBag.id = id;
+            ViewBag.trip = db.FieldTrips.Find(tripId);
+            ViewBag.SubmitByDate = db.FieldTrips.Find(tripId).SubmitByDate.Value.ToLongDateString();
+            ViewBag.TripDate = db.FieldTrips.Find(tripId).TripDate.Value.Date.ToLongDateString();
+            ViewBag.DepartureTime = db.FieldTrips.Find(tripId).DepartureTime.Value.ToShortTimeString();
+            ViewBag.ChaperoneArrivalTime = db.FieldTrips.Find(tripId).ChapperoneArrivalTime.Value.ToShortTimeString();
+            ViewBag.ChaperoneCost = db.FieldTrips.Find(tripId).ChapperoneCost;
+            ViewBag.ReturnTime = db.FieldTrips.Find(tripId).ReturnTime.Value.ToShortTimeString();
+            ViewBag.tripId = tripId;
+            ViewBag.studentId = studentId;
+            ViewBag.studentName = db.Students.Find(studentId).Stud_F_Name + " " + db.Students.Find(studentId).Stud_L_Name;
+            ViewBag.UserId = User.Identity.GetUserId();
 
             return View();
         }
@@ -152,41 +157,36 @@ namespace Rilke_Schule_Student_Management.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult ViewPermissionSlip(SignUp model)
         {
-            string notAdded = "Trip Not Added";
-
-            // Just forces it to find the student with id of 4. Needs to be changed.
-            model.Student = db.Students.Find(4);
-
-            //model.FieldTrip_Id = 
-
+            string message = "Trip Not Added";
+           
             try
             {
                 db.SignUps.Add(model);
                 int result = db.SaveChanges();
                 if (result > 0)
                 {
-                    return RedirectToAction("ViewTrip", "FieldTrip");
+                    return RedirectToAction("ViewTrip", "FieldTrip", new { studentId = model.Student_Number });
                 }
             }
             catch (DbEntityValidationException e)
             {
 
             }
-            return View(notAdded);
+            return View(message);
         }
-
+        
         [Authorize(Roles = "Parent")]
-        public ActionResult ViewTrip(int id)
+        public ActionResult ViewTrip(int studentId)
         {            
             // Queryable list of classes with a matching student_number matching the student numbers from the guardian variable.
             var classes = from model in db.Classes
-                          where model.Student_Number.Equals(id)
+                          where model.Student_Number.Equals(studentId)
                           select model.Class_Id;
 
             var fieldTrips = from m in db.FieldTrips
                            where classes.Contains(m.Class_Id)
                            select m;
-
+            ViewBag.studentId = studentId;
             return View(fieldTrips.ToList());
         }
 

@@ -14,19 +14,19 @@
 <div>
     <p>Dear Parent/Guardian</p>
     <p>
-        All permission slips must be received by <b>@ViewBag.trip.SubmitByDate</b> or your child will not be able to participate in this field trip.
+        All permission slips must be received by <b>@ViewBag.SubmitByDate</b> or your child will not be able to participate in this field trip.
 
         Students will be expected to dress according to the Rilke Schule dress code.  Students will be expected to follow ASD and Rilke Schule behavior policies.  Students not behaving appropriately may not be invited to accompany the class on future field trips.
     </p>
 
     <table>
         <tr>
-            <td>Field Trip Date: <b>@ViewBag.trip.TripDate) </b></td>
-            <td>Departure Time: <b>@ViewBag.trip.DepartureTime)</b></td>
+            <td>Field Trip Date: <b>@ViewBag.TripDate </b></td>
+            <td>Departure Time: <b>@ViewBag.DepartureTime</b></td>
         </tr>
         <tr>
-            <td>Chaperone Arrival: <b>@ViewBag.trip.ChapperoneArrivalTime) </b></td>
-            <td>Return Time: <b>@ViewBag.trip.ReturnTime)</b></td>
+            <td>Chaperone Arrival: <b>@ViewBag.ChaperoneArrivalTime </b></td>
+            <td>Return Time: <b>@ViewBag.ReturnTime</b></td>
         </tr>
         <tr>
             <td>Transportation Provided by: <b>@ViewBag.trip.Transportation</b></td>
@@ -39,26 +39,30 @@
             I, <span class="form-horizontal">@Html.TextBoxFor(model => model.Chaperone_Name)</span> would like to chaperone this trip. This time will be counted toward my volunteer hours. I am aware that chaperone positions are sometimes limited and will be taken on a first-come basis. Please contact me at <span class="form-horizontal">@Html.TextBoxFor(model => model.Chaperone_Contact_Number)</span>
 </p>
         <p>
-            If you are chosen to chaperone this field trip, the cost will be $#####-Cost-Place-Holder-##### and will be paid directly to your student&apos;s teacher.   Exact change is appreciated or you may write a check payable to Rilke Schule.
+            If you are chosen to chaperone this field trip, the cost will be @ViewBag.ChaperoneCost and will be paid directly to your student&apos;s teacher.   Exact change is appreciated or you may write a check payable to Rilke Schule.
         </p>
         <p>
             If an emergency arises on this trip please contact <span class="form-horizontal">@Html.TextBoxFor(model => model.Emergency_Contact_Name)</span> at this number <span class="form-horizontal">@Html.TextBoxFor(model => model.Emergency_Contact_Number)</span>.
 </p>
         <p>
-            By signing this document, I give permission for my child #####<input type="text" name="ChildName" placeholder="Child's Name">###### to participate in this field trip and for Rilke Schule staff members to seek medical attention for my child in case of an emergency.
+            By signing this document, I give permission for my child @ViewBag.studentName to participate in this field trip and for Rilke Schule staff members to seek medical attention for my child in case of an emergency.
         </p>
         <div class="form-horizontal">
             <div class="form-group">
-                @Html.TextBox("PrintedName")
-                <div class="pName">Parent/Guardian (Printed Name)</div>
+                @Html.TextBoxFor(model => model.Printed_Name)
+                @Html.LabelFor(model => model.Printed_Name)
             </div>
             <div class="form-group">
                 @Html.TextBox("Signature")
                 <div class="pSig">Signature</div>
             </div>
+
+            @*Hidden Values to be added to the form data*@
             <div class="form-group">
-                @Html.EditorFor(model => model.Date_Signed)
-                <div class="pDate">Date</div>
+                @Html.TextBoxFor(model => model.Date_Signed, new { @Value = DateTime.Today, @class = "hidden", @readonly = "readonly" })
+                @Html.TextBoxFor(model => model.FieldTrip_Id, new { @Value = ViewBag.tripId, @class = "hidden", @readonly = "readonly" })
+                @Html.TextBoxFor(model => model.Student_Number, new { @Value = ViewBag.studentId, @class = "hidden", @readonly = "readonly" })
+                @Html.TextBoxFor(model => model.UserId, new { @Value = ViewBag.UserId, @class = "hidden", @readonly = "readonly" })
             </div>
             <div class="form-group">
                 <input type="submit" class="btn btn-default" value="Submit" />

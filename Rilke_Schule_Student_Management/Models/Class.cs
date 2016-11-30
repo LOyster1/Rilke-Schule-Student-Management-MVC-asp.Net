@@ -7,7 +7,7 @@ namespace Rilke_Schule_Student_Management.Models
     {
         [Key]
         [Required]
-        [Display(Name = "Teacher Name")]
+        [Display(Name = "Class Name")]
         public string Class_Id { get; set; }
 
 

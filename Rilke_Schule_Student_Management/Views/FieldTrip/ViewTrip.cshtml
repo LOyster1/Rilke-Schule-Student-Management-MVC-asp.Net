@@ -64,7 +64,7 @@
                 @Html.DisplayFor(modelItem => item.Transportation)
             </td>
             <td>
-                @Html.ActionLink("View", "ViewPermissionSlip", new { id = item.FieldTrip_Id })
+                @Html.ActionLink("View", "ViewPermissionSlip", new { tripId = item.FieldTrip_Id, studentId = ViewBag.studentId })
             </td>
         </tr>
     }
