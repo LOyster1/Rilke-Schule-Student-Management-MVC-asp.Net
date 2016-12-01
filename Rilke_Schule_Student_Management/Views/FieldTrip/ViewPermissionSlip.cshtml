@@ -36,21 +36,21 @@
     {
         @Html.AntiForgeryToken()
         <p>
-            I, <span class="form-horizontal">@Html.TextBoxFor(model => model.Chaperone_Name)</span> would like to chaperone this trip. This time will be counted toward my volunteer hours. I am aware that chaperone positions are sometimes limited and will be taken on a first-come basis. Please contact me at <span class="form-horizontal">@Html.TextBoxFor(model => model.Chaperone_Contact_Number)</span>
+            I, <span class="form-horizontal">@Html.TextBoxFor(model => model.Chaperone_Name, new { @placeholder = "Chaperone Name" })</span> would like to chaperone this trip. This time will be counted toward my volunteer hours. I am aware that chaperone positions are sometimes limited and will be taken on a first-come basis. Please contact me at <span class="form-horizontal">@Html.TextBoxFor(model => model.Chaperone_Contact_Number, new { @placeholder = "Chaperone Phone Number" })</span>
 </p>
         <p>
-            If you are chosen to chaperone this field trip, the cost will be @ViewBag.ChaperoneCost and will be paid directly to your student&apos;s teacher.   Exact change is appreciated or you may write a check payable to Rilke Schule.
+            If you are chosen to chaperone this field trip, the cost will be $<b>@ViewBag.ChaperoneCost</b> and will be paid directly to your student&apos;s teacher.   Exact change is appreciated or you may write a check payable to Rilke Schule.
         </p>
         <p>
-            If an emergency arises on this trip please contact <span class="form-horizontal">@Html.TextBoxFor(model => model.Emergency_Contact_Name)</span> at this number <span class="form-horizontal">@Html.TextBoxFor(model => model.Emergency_Contact_Number)</span>.
+            If an emergency arises on this trip please contact <span class="form-horizontal">@Html.TextBoxFor(model => model.Emergency_Contact_Name, new { @placeholder = "Emergency Contact Name" })</span> at this number <span class="form-horizontal">@Html.TextBoxFor(model => model.Emergency_Contact_Number, new { @placeholder = "Emergency Phone Number" })</span>.
 </p>
         <p>
-            By signing this document, I give permission for my child @ViewBag.studentName to participate in this field trip and for Rilke Schule staff members to seek medical attention for my child in case of an emergency.
+            By signing this document, I give permission for my child <b>@ViewBag.studentName</b> to participate in this field trip and for Rilke Schule staff members to seek medical attention for my child in case of an emergency.
         </p>
         <div class="form-horizontal">
             <div class="form-group">
                 @Html.TextBoxFor(model => model.Printed_Name)
-                @Html.LabelFor(model => model.Printed_Name)
+                <div class="pSig">Print Name</div>
             </div>
             <div class="form-group">
                 @Html.TextBox("Signature")
