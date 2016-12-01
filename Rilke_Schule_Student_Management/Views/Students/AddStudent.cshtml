@@ -5,10 +5,13 @@
 }
 
 <h2>Add Student</h2>
-<form>
+@using (Html.BeginForm("AddStudent", "Students", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <hr />
     <div class="form-group">
-        @Html.LabelFor(m =>m.Stud_F_Name)
-        @Html.TextBoxFor(m=>m.Stud_F_Name, new { @class ="form-control" })
+        @Html.LabelFor(m => m.Stud_F_Name)
+        @Html.TextBoxFor(m => m.Stud_F_Name, new { @class = "form-control" })
         @Html.ValidationMessageFor(m => m.Stud_F_Name)
     </div>
     <div class="form-group">
@@ -23,4 +26,11 @@
     </div>
     <button type="submit" value="Add Student" class="btn btn-primary">Add Student</button>
 
-</form>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
