@@ -1,4 +1,4 @@
-﻿@model Rilke_Schule_Student_Management.Models.Student
+﻿@model @Rilke_Schule_Student_Management.Models.Guardianship
 
 @{
     ViewBag.Title = "Delete Student";
@@ -12,31 +12,33 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Stud_F_Name)
+            <p>Student First Name</p>
         </dt>
-            
+
         <dd>
-            @Html.DisplayFor(model => model.Stud_F_Name)
+            @ViewBag.Stud_F_Name
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Stud_L_Name)
+            <p>Student Last Name</p>
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Stud_L_Name)
+            @ViewBag.Stud_L_Name
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Date_Of_Birth)
+            <p>Date of Birth</p>
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Date_Of_Birth)
+            @ViewBag.Date_Of_Birth
         </dd>
 
+        @Html.HiddenFor(m => m.Student_Number, new { id = "Student_Number"})
+        
     </dl>
-
-            @Html.ActionLink("Confirm Delete", "ConfirmDelete", new { id= Model.Student_Number }) |
+            
+            @Html.ActionLink("Confirm Delete", "ConfirmDeleteStudent") |
             @Html.ActionLink("Back to List", "ManageStudent")
 </div>

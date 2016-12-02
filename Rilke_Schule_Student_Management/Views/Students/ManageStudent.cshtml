@@ -1,4 +1,4 @@
-﻿@model Rilke_Schule_Student_Management.Models.Student
+﻿@model IEnumerable<Rilke_Schule_Student_Management.Models.Student>
 
 @{
     ViewBag.Title = "Manage Student";
@@ -9,6 +9,7 @@
 <p>
     @Html.ActionLink("Create New", "AddStudent")
 </p>
+
 <table class="table">
     <tr>
         <th>
@@ -22,6 +23,29 @@
         </th>
         <th></th>
     </tr>
-    
+
+@if (Model != null)
+{
+
+    foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Stud_F_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Stud_L_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date_Of_Birth)
+        </td>
+        <td>
+            @Html.ActionLink("Delete", "DeleteStudent", new { id = item.Student_Number })
+        </td>
+    </tr>
+    }
+}
+
+
 
 </table>

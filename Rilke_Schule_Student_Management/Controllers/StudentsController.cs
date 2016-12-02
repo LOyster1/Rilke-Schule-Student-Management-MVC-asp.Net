@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNet.Identity;
 using Rilke_Schule_Student_Management.Models;
 using System.Data.Entity;
-using System.Data.Entity.Core.Objects;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -61,7 +60,43 @@ namespace Rilke_Schule_Student_Management.Controllers
         [Authorize(Roles = "Parent")]
         public ActionResult ManageStudent()
         {
-            return View();
+            var userId = User.Identity.GetUserId();
+
+            // Queryable list of Guardianships with a matching username and to the user in session.
+            var studentId = from m in db.Guardianships
+                            where m.Parent.Id == userId
+                            select m.Student_Number;
+
+            var students = from s in db.Students
+                           where studentId.Contains(s.Student_Number)
+                           select s;
+
+            return View(students.ToList());
+        }
+        [Authorize(Roles = "Parent")]
+        public ActionResult DeleteStudent(int id)
+        {
+            ViewBag.Stud_F_Name = db.Students.Find(id).Stud_F_Name;
+            ViewBag.Stud_L_Name = db.Students.Find(id).Stud_L_Name;
+            ViewBag.Date_Of_Birth = db.Students.Find(id).Date_Of_Birth.ToShortDateString();
+
+
+
+            return View(db.Guardianships.Find(id));
+        }
+        [Authorize(Roles = "Parent")]
+        public ActionResult ConfirmDeleteStudent(int id)
+        {
+            //Deletes relation between parent & student
+            Guardianship delete = db.Guardianships.Find(id);
+            if (delete == null)
+            {
+                return RedirectToAction("ManageStudent", "Student");
+            }
+            db.Guardianships.Remove(delete);
+            db.SaveChanges();
+
+            return RedirectToAction("ManageStudent", "Student");
         }
         [Authorize(Roles = "Parent")]
         public ActionResult AddGuardianship()
