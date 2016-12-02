@@ -1,4 +1,4 @@
-﻿@model @Rilke_Schule_Student_Management.Models.Guardianship
+﻿@model Rilke_Schule_Student_Management.Models.Guardianship
 
 @{
     ViewBag.Title = "Delete Student";
@@ -39,6 +39,6 @@
         
     </dl>
             
-            @Html.ActionLink("Confirm Delete", "ConfirmDeleteStudent") |
+            @Html.ActionLink("Confirm Delete", "ConfirmDeleteStudent", new { id = Model.Guardianship_Id }) |
             @Html.ActionLink("Back to List", "ManageStudent")
 </div>

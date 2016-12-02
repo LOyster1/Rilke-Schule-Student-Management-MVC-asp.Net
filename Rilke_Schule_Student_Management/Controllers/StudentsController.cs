@@ -83,13 +83,24 @@ namespace Rilke_Schule_Student_Management.Controllers
         [Authorize(Roles = "Parent")]
         public ActionResult DeleteStudent(int id)
         {
+            string userId = User.Identity.GetUserId();
+            int studentId = id;
+
             ViewBag.Stud_F_Name = db.Students.Find(id).Stud_F_Name;
             ViewBag.Stud_L_Name = db.Students.Find(id).Stud_L_Name;
             ViewBag.Date_Of_Birth = db.Students.Find(id).Date_Of_Birth.ToShortDateString();
 
+            var guardianshipId = from m in db.Guardianships
+                                 where m.UserName == userId && m.Student_Number == studentId
+                                 select m;
 
+            if(guardianshipId.Count() > 1)
+            {
+                return RedirectToAction("DeleteStudent", "Students");
+            }
+            var output = guardianshipId.First();
 
-            return View(db.Guardianships.Find(id));
+            return View(output);
         }
         [Authorize(Roles = "Parent")]
         public ActionResult ConfirmDeleteStudent(int id)
@@ -98,12 +109,12 @@ namespace Rilke_Schule_Student_Management.Controllers
             Guardianship delete = db.Guardianships.Find(id);
             if (delete == null)
             {
-                return RedirectToAction("ManageStudent", "Student");
+                return RedirectToAction("ManageStudent", "Students");
             }
             db.Guardianships.Remove(delete);
             db.SaveChanges();
 
-            return RedirectToAction("ManageStudent", "Student");
+            return RedirectToAction("ManageStudent", "Students");
         }
         [Authorize(Roles = "Parent")]
         public ActionResult AddGuardianship()
