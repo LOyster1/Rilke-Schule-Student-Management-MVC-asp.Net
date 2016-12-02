@@ -83,7 +83,7 @@ namespace Rilke_Schule_Student_Management.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult ViewAllTrips()
         {
-            return View(db.FieldTrips.ToList());
+            return View(db.SignUps.ToList());
         }
 
         [Authorize(Roles = "Admin")]

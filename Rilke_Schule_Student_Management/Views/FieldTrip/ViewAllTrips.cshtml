@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Rilke_Schule_Student_Management.Models.FieldTrip>
+﻿@model IEnumerable<Rilke_Schule_Student_Management.Models.SignUp>
 
 @{
     ViewBag.Title = "ViewAllTrips";
@@ -12,28 +12,31 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Class.Class_Id)
+            @Html.DisplayNameFor(model => model.FieldTrip.Class_Id)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TripName)
+            @Html.DisplayNameFor(model => model.Student.Stud_F_Name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.SubmitByDate)
+            @Html.DisplayNameFor(model => model.UserId)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TripDate)
+            @Html.DisplayNameFor(model => model.Chaperone_Name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ChapperoneArrivalTime)
+            @Html.DisplayNameFor(model => model.Chaperone_Contact_Number)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DepartureTime)
+            @Html.DisplayNameFor(model => model.Emergency_Contact_Name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ReturnTime)
+            @Html.DisplayNameFor(model => model.Emergency_Contact_Number)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Transportation)
+            @Html.DisplayNameFor(model => model.Date_Signed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Printed_Name)
         </th>
         <th></th>
     </tr>
@@ -41,33 +44,36 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Class.Class_Id)
+            @Html.DisplayFor(modelItem => item.FieldTrip.Class_Id)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.TripName)
+            @Html.DisplayFor(modelItem => item.Student.Stud_F_Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.SubmitByDate)
+            @Html.DisplayFor(modelItem => item.UserId)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.TripDate)
+            @Html.DisplayFor(modelItem => item.Chaperone_Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ChapperoneArrivalTime)
+            @Html.DisplayFor(modelItem => item.Chaperone_Contact_Number)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DepartureTime)
+            @Html.DisplayFor(modelItem => item.Emergency_Contact_Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ReturnTime)
+            @Html.DisplayFor(modelItem => item.Emergency_Contact_Number)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Transportation)
+            @Html.DisplayFor(modelItem => item.Date_Signed)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.FieldTrip_Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.FieldTrip_Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.FieldTrip_Id })
+            @Html.DisplayFor(modelItem => item.Printed_Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Sign_Up_Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Sign_Up_Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Sign_Up_Id })
         </td>
     </tr>
 }
