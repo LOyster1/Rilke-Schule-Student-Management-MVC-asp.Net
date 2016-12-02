@@ -28,10 +28,11 @@
                         @Html.AntiForgeryToken()
                         <li>@Html.ActionLink("Activities", "Index", "Home")</li>
                         <li>@Html.ActionLink("Field Trips", "FieldTripManager", "FieldTrip")</li>
-                        if (User.IsInRole("Parent"))
+                        //Adds a Manage Student button to toolbar
+                        @*if (User.IsInRole("Parent"))
                         {
-                            <li>@Html.ActionLink("Manage Student", "AddStudent", "Students")</li>
-                        }
+                            <li>@Html.ActionLink("Manage Student", "ManageStudent", "Students")</li>
+                        }*@
                     }
                 </ul>
                 @Html.Partial("_LoginPartial")

@@ -14,7 +14,7 @@
         <div class="col-md-4">
             <h2>After School Activities</h2>
             <p>
-                Sign up your student for a varity of After School Activities such as  Arctic Gymnastics, Anchorage Gymnastics, Champs Martial Arts, Anchorage Fencing Club, American Sign Language, the Suzuki Program, and More!
+                Sign up your student for a variety of After School Activities such as Arctic Gymnastics, Anchorage Gymnastics, Champs Martial Arts, Anchorage Fencing Club, American Sign Language, the Suzuki Program, and More!
             </p>
             <p><a class="btn btn-default" href="#">See Activities &raquo;</a></p>
         </div>
@@ -27,9 +27,9 @@
         @if(User.IsInRole("Parent"))
         {
             <div class="col-md-4">
-                <h2>Manage Students</h2>
-                <p>Need to add or drop a Student of yours to your account?</p>
-                <p><a class="btn btn-default" onclick="location.href='@Url.Action("ManageStudent", "Students")'">Add/Drop &raquo;</a></p>
+                <h2>Manage Account</h2>
+                <p>Need to change your password or add/drop a Student to your account?</p>
+                <p><a class="btn btn-default" onclick="location.href='@Url.Action("Index", "Manage")'">Manage &raquo;</a></p>
             </div>
         }
     </div>
