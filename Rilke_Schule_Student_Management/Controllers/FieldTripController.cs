@@ -187,10 +187,10 @@ namespace Rilke_Schule_Student_Management.Controllers
             // Queryable list of classes with a matching student_number matching the student numbers from the guardian variable.
             var classes = from model in db.Classes
                           where model.Student_Number.Equals(studentId)
-                          select model.Class_Id;
+                          select model.Teacher_Id;
 
             var fieldTrips = from m in db.FieldTrips
-                           where classes.Contains(m.Class_Id)
+                           where classes.Contains(m.Teacher_Id)
                            select m;
             ViewBag.studentId = studentId;
             return View(fieldTrips.ToList());
