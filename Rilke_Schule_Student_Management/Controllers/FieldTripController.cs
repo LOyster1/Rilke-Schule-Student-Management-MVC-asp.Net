@@ -25,8 +25,8 @@ namespace Rilke_Schule_Student_Management.Controllers
         public ActionResult AddTrip()
         {
             //Send to the view, the userTypeList
-            IEnumerable<SelectListItem> classId = new SelectList(db.Classes.ToList(), "Class_Id", "Class_Id");
-            ViewData["classId"] = classId;
+            IEnumerable<SelectListItem> teacherId = new SelectList(db.Teachers.ToList(), "Teacher_Id", "Teacher_Id");
+            ViewData["teacherId"] = teacherId;
 
             return View();
         }
@@ -88,8 +88,8 @@ namespace Rilke_Schule_Student_Management.Controllers
         public ActionResult EditTripDetails(int id)
         {
             //Send to the view, the userTypeList
-            IEnumerable<SelectListItem> classId = new SelectList(db.Classes.ToList(), "Class_Id", "Class_Id");
-            ViewData["classId"] = classId;
+            IEnumerable<SelectListItem> teacherId = new SelectList(db.Teachers.ToList(), "Teacher_Id", "Teacher_Id");
+            ViewData["teacherId"] = teacherId;
 
             return View(db.FieldTrips.Find(id));
         }

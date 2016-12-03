@@ -71,10 +71,10 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(m => m.Class_Id, new { @class = "col-md-2 control-label" })
+        @Html.LabelFor(m => m.Teacher_Id, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.DropDownListFor(m => m.Class_Id, ViewData["classId"] as IEnumerable<SelectListItem>, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.Class_Id)
+            @Html.DropDownListFor(m => m.Teacher_Id, ViewData["teacherId"] as IEnumerable<SelectListItem>, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Teacher_Id)
         </div>
     </div>
 
