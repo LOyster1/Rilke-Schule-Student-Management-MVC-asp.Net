@@ -62,7 +62,6 @@
                 @Html.TextBoxFor(model => model.Date_Signed, new { @Value = DateTime.Today, @class = "hidden", @readonly = "readonly" })
                 @Html.TextBoxFor(model => model.FieldTrip_Id, new { @Value = ViewBag.tripId, @class = "hidden", @readonly = "readonly" })
                 @Html.TextBoxFor(model => model.Student_Number, new { @Value = ViewBag.studentId, @class = "hidden", @readonly = "readonly" })
-                @Html.TextBoxFor(model => model.UserId, new { @Value = ViewBag.UserId, @class = "hidden", @readonly = "readonly" })
             </div>
             <div class="form-group">
                 <input type="submit" class="btn btn-default" value="Submit" />

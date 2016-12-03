@@ -98,7 +98,7 @@ namespace Rilke_Schule_Student_Management.Controllers
         public ActionResult ConfirmEditTripDetails(FieldTrip ft)
         {
             var update = db.FieldTrips.Find(ft.FieldTrip_Id);
-            update.Class_Id = ft.Class_Id;
+            update.Teacher_Id = ft.Teacher_Id;
             update.TripName = ft.TripName;
             update.SubmitByDate = ft.SubmitByDate;
             update.TripDate = ft.TripDate;
@@ -139,7 +139,6 @@ namespace Rilke_Schule_Student_Management.Controllers
         {
             int tripId = Request.Form["fieldTripId"].AsInt();
             int studentId = Request.Form["studentId"].AsInt();
-
             ViewBag.trip = db.FieldTrips.Find(tripId);
             ViewBag.SubmitByDate = db.FieldTrips.Find(tripId).SubmitByDate.Value.ToLongDateString();
             ViewBag.TripDate = db.FieldTrips.Find(tripId).TripDate.Value.Date.ToLongDateString();
@@ -168,7 +167,7 @@ namespace Rilke_Schule_Student_Management.Controllers
                 int result = db.SaveChanges();
                 if (result > 0)
                 {
-                    return RedirectToAction("ViewTrip", "FieldTrip", new { studentId = model.Student_Number });
+                    return RedirectToAction("FieldTripmanager", "FieldTrip");
                 }
             }
             catch (DbEntityValidationException e)
@@ -179,8 +178,12 @@ namespace Rilke_Schule_Student_Management.Controllers
         }
         
         [Authorize(Roles = "Parent")]
-        public ActionResult ViewTrip(int studentId)
-        {            
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ViewTrip()
+        {
+            int studentId = Request.Form["studentid"].AsInt();
+
             // Queryable list of classes with a matching student_number matching the student numbers from the guardian variable.
             var classes = from model in db.Classes
                           where model.Student_Number.Equals(studentId)
