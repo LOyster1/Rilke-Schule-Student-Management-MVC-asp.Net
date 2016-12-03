@@ -12,9 +12,10 @@ namespace Rilke_Schule_Student_Management.Models
 
         [Required]
         [Display(Name = "Class Id")]
-        public string Class_Id { get; set; }//---Changed to string
-        [ForeignKey("Class_Id"), Column(Order = 1)]
-        public virtual Class Class { get; set; }
+        public string Teacher_Id { get; set; }//---Changed to string
+       // [ForeignKey("Class_Id"), Column(Order = 1)]
+        [ForeignKey("Teacher_Id")]
+        public virtual Teacher Teacher { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "Must enter a Trip Name", MinimumLength = 1)]

@@ -16,9 +16,14 @@ namespace Rilke_Schule_Student_Management.Models
         public virtual FieldTrip FieldTrip { get; set; }
 
         [Required]
-        public int Student_Number { get; set; }
-        [ForeignKey("Student_Number"), Column(Order = 2)]
-        public virtual Student Student { get; set; }
+        public int Class_Id { get; set; }
+        [ForeignKey("Class_Id"), Column(Order = 2)]
+        public virtual Class Class { get; set; }
+
+        [Required]
+        [Display(Name = "Slip Signed")]
+        public bool Signed_Bit { get; set; }
+
 
         [Required]
         [DataType(DataType.Text)]

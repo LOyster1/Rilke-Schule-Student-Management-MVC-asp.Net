@@ -7,8 +7,14 @@ namespace Rilke_Schule_Student_Management.Models
     {
         [Key]
         [Required]
-        [Display(Name = "Class Name")]
-        public string Class_Id { get; set; }
+        [Display(Name = "Class ID")]
+        public int Class_Id { get; set; }
+
+
+        [Required]
+        public string Teacher_Id { get; set; }
+        [ForeignKey("Teacher_Id"), Column(Order = 1)]
+        public virtual Teacher Teacher { get; set; }
 
 
         [Required]

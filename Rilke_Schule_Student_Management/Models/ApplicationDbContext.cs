@@ -8,6 +8,8 @@ namespace Rilke_Schule_Student_Management.Models
         public DbSet<Student> Students { get; set; }
         public DbSet<Guardianship> Guardianships { get; set; }
 
+        public DbSet<Teacher> Teachers { get; set; }
+
         public DbSet<Class> Classes { get; set; }
 
         public DbSet<FieldTrip> FieldTrips { get; set; }
