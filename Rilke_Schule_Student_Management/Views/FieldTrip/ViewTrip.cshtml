@@ -39,7 +39,6 @@
     </tr>
 
 @foreach (var item in Model) {
-    @*if (item.Class_Id == User.Identity.GetUserId())*@
     {
         <tr>
             <td>
@@ -70,7 +69,14 @@
                 @Html.DisplayFor(modelItem => item.Transportation)
             </td>
             <td>
-                @Html.ActionLink("View", "ViewPermissionSlip", new { tripId = item.FieldTrip_Id, studentId = ViewBag.studentId })
+                @using (Html.BeginForm("ViewPermissionSlip", "FieldTrip", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <input type="text" name="fieldTripId" class="hidden" value=@item.FieldTrip_Id>
+                    <input type="text" name="studentId" class="hidden" value=@ViewBag.studentId>
+                    <input type="submit" class="btn btn-default" value="View Field Trips" />
+
+                }
             </td>
         </tr>
     }

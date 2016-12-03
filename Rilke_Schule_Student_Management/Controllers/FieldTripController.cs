@@ -1,12 +1,10 @@
-﻿using Rilke_Schule_Student_Management.Models;
-using System;
+﻿using Microsoft.AspNet.Identity;
+using Rilke_Schule_Student_Management.Models;
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
 using System.Linq;
-using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
+using System.Web.WebPages;
 
 namespace Rilke_Schule_Student_Management.Controllers
 {
@@ -135,8 +133,13 @@ namespace Rilke_Schule_Student_Management.Controllers
         }
 
         [Authorize(Roles = "Parent")]
-        public ActionResult ViewPermissionSlip(int tripId, int studentId)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ViewPermissionSlip()
         {
+            int tripId = Request.Form["fieldTripId"].AsInt();
+            int studentId = Request.Form["studentId"].AsInt();
+
             ViewBag.trip = db.FieldTrips.Find(tripId);
             ViewBag.SubmitByDate = db.FieldTrips.Find(tripId).SubmitByDate.Value.ToLongDateString();
             ViewBag.TripDate = db.FieldTrips.Find(tripId).TripDate.Value.Date.ToLongDateString();
@@ -155,7 +158,7 @@ namespace Rilke_Schule_Student_Management.Controllers
         [Authorize(Roles = "Parent")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult ViewPermissionSlip(SignUp model)
+        public ActionResult SubmitPermissionSlip(SignUp model)
         {
             string message = "Trip Not Added";
            

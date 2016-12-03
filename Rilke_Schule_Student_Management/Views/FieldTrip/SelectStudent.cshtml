@@ -38,11 +38,11 @@
             @using (Html.BeginForm("ViewTrip", "FieldTrip", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
                 @Html.AntiForgeryToken()
-                @Html.TextBoxFor(modelItem => item.Student_Number, htmlAttributes: new { @name="studentId", @Value = item.Student_Number, @class = "hidden", @readonly = "readonly" })
-                //<input type="submit" class="btn btn-default" value="View Field Trips" />
-                @Html.ActionLink("View Field Trips", "ViewTrip", "FieldTrip", new { studentId = item.Student_Number }, null)
+                <input type="text" name="studentId" class="hidden" value=@item.Student_Number>
+                <input type="submit" class="btn btn-default" value="View Field Trips" />
             }
         </td>
+
     </tr>
 }
 

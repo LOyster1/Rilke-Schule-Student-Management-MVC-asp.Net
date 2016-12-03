@@ -32,7 +32,7 @@
             <td>Transportation Provided by: <b>@ViewBag.trip.Transportation</b></td>
         </tr>
     </table>
-    @using (Html.BeginForm("ViewPermissionSlip", "FieldTrip", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    @using (Html.BeginForm("submitPermissionSlip", "FieldTrip", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
     {
         @Html.AntiForgeryToken()
         <p>
