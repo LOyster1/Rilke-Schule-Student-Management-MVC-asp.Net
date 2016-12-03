@@ -1,11 +1,8 @@
 ﻿@model Rilke_Schule_Student_Management.Models.Guardianship
-
 @{
     ViewBag.Title = "Delete Student";
 }
-
 <h2>Delete Student</h2>
-
 <h3>Are you sure you want to delete this?</h3>
 <div>
     <h4>Student</h4>
@@ -14,31 +11,29 @@
         <dt>
             <p>Student First Name</p>
         </dt>
-
         <dd>
             @ViewBag.Stud_F_Name
         </dd>
-
         <dt>
             <p>Student Last Name</p>
         </dt>
-
         <dd>
             @ViewBag.Stud_L_Name
         </dd>
-
         <dt>
             <p>Date of Birth</p>
         </dt>
-
         <dd>
             @ViewBag.Date_Of_Birth
         </dd>
 
-        @Html.HiddenFor(m => m.Student_Number, new { id = "Student_Number"})
-        
     </dl>
-            
-            @Html.ActionLink("Confirm Delete", "ConfirmDeleteStudent", new { id = Model.Guardianship_Id }) |
-            @Html.ActionLink("Back to List", "ManageStudent")
+    @using (Html.BeginForm("ConfirmDeleteStudent", "Students", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        <input type="text" name="id" class="hidden" value="@Model.Guardianship_Id">
+        <input type="submit" class="btn btn-default" value="Confirm Delete" />
+        <input type="button" class="btn btn-default" value="Back to List" onclick="location.href='@Url.Action("ManageStudent", "Students")'" />
+    }
+    @*@Html.ActionLink("Confirm Delete", "ConfirmDeleteStudent", new { id = Model.Guardianship_Id })|*@
 </div>

@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNet.Identity;
 using Rilke_Schule_Student_Management.Models;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
+using System.Web.WebPages;
 
 namespace Rilke_Schule_Student_Management.Controllers
 {
@@ -81,17 +81,19 @@ namespace Rilke_Schule_Student_Management.Controllers
             return View(students.ToList());
         }
         [Authorize(Roles = "Parent")]
-        public ActionResult DeleteStudent(int id)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteStudent()
         {
             string userId = User.Identity.GetUserId();
-            int studentId = id;
+            int id = Request.Form["studentId"].AsInt();
 
             ViewBag.Stud_F_Name = db.Students.Find(id).Stud_F_Name;
             ViewBag.Stud_L_Name = db.Students.Find(id).Stud_L_Name;
             ViewBag.Date_Of_Birth = db.Students.Find(id).Date_Of_Birth.ToShortDateString();
 
             var guardianshipId = from m in db.Guardianships
-                                 where m.UserName == userId && m.Student_Number == studentId
+                                 where m.UserName == userId && m.Student_Number == id
                                  select m;
 
             if(guardianshipId.Count() > 1)
