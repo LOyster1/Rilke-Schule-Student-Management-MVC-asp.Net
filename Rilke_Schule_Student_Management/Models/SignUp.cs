@@ -23,11 +23,7 @@ namespace Rilke_Schule_Student_Management.Models
         [Required]
         [Display(Name = "Slip Signed")]
         public bool Signed_Bit { get; set; }
-
-
-        [Required]
-        [DataType(DataType.Text)]
-        public int UserId { get; set; }
+        
 
         [StringLength(100, MinimumLength = 1)]
         [DataType(DataType.Text)]
