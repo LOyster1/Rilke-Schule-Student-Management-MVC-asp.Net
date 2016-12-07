@@ -7,7 +7,7 @@
 <h2>ViewAllTrips</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Back", "SelectFieldTrip")
 </p>
 <table class="table">
     <tr>
@@ -15,7 +15,7 @@
             @Html.DisplayNameFor(model => model.FieldTrip.Teacher_Id)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Student.Stud_F_Name)
+            Student Name
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Chaperone_Name)
@@ -35,7 +35,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Printed_Name)
         </th>
-        <th></th>
+        <th>
+            @Html.DisplayNameFor(model => model.Signed_Bit)
+        </th>
     </tr>
 
 @foreach (var item in Model) {
@@ -44,7 +46,7 @@
             @Html.DisplayFor(modelItem => item.FieldTrip.Teacher_Id)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Student.Stud_F_Name)
+            @Html.DisplayFor(model => item.Class.Student.Stud_F_Name) @Html.DisplayFor(model => item.Class.Student.Stud_L_Name)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Chaperone_Name)
@@ -65,11 +67,14 @@
             @Html.DisplayFor(modelItem => item.Printed_Name)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Sign_Up_Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Sign_Up_Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Sign_Up_Id })
+            @Html.DisplayFor(modelItem => item.Signed_Bit)
         </td>
     </tr>
+}
+
+@for(int i = 0; i < ViewBag.studentName; i++)
+{
+    @ViewBag.studentName.Find(i).ToString();
 }
 
 </table>

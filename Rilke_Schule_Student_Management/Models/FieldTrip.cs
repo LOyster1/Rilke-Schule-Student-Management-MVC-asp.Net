@@ -26,11 +26,13 @@ namespace Rilke_Schule_Student_Management.Models
         [Required]
         [DataType(DataType.Date)]
         [Display(Name = "Submit By Date")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime? SubmitByDate { get; set; }
 
         [Required]
         [DataType(DataType.Date)]
         [Display(Name = "Trip Date")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime? TripDate { get; set; }
 
         [Required]
@@ -41,7 +43,7 @@ namespace Rilke_Schule_Student_Management.Models
         [Required]
         [DataType(DataType.Time)]
         [Display(Name = "Departure Time")]
-        public DateTime? DepartureTime { get; set; }
+       public DateTime? DepartureTime { get; set; }
 
         [Required]
         [DataType(DataType.Time)]

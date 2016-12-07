@@ -1,0 +1,79 @@
+﻿@model IEnumerable<Rilke_Schule_Student_Management.Models.FieldTrip>
+
+@{
+    ViewBag.Title = "SelectFieldTrip";
+}
+
+<h2>SelectFieldTrip</h2>
+
+<p>
+    @Html.ActionLink("Back", "FieldTripManager")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Teacher.Teacher_Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TripName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SubmitByDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TripDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ChapperoneArrivalTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DepartureTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReturnTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Transportation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ChapperoneCost)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Teacher.Teacher_Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TripName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SubmitByDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TripDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ChapperoneArrivalTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DepartureTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReturnTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Transportation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ChapperoneCost)
+        </td>
+        <td>
+            @Html.ActionLink("View SignUps", "ViewAllTrips", new { id=item.FieldTrip_Id })
+        </td>
+    </tr>
+}
+
+</table>

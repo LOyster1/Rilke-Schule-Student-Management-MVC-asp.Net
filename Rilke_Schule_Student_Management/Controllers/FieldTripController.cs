@@ -79,9 +79,19 @@ namespace Rilke_Schule_Student_Management.Controllers
         }
 
         [Authorize(Roles = "Admin")]
-        public ActionResult ViewAllTrips()
+        public ActionResult SelectFieldTrip()
         {
-            return View(db.SignUps.ToList());
+            return View(db.FieldTrips.ToList());
+        }
+
+        [Authorize(Roles = "Admin")]
+        public ActionResult ViewAllTrips(int id)
+        {
+            var sign_up = from m in db.SignUps
+                          where m.FieldTrip_Id == id
+                          select m;
+
+            return View(sign_up.ToList());
         }
 
         [Authorize(Roles = "Admin")]
@@ -90,6 +100,10 @@ namespace Rilke_Schule_Student_Management.Controllers
             //Send to the view, the userTypeList
             IEnumerable<SelectListItem> teacherId = new SelectList(db.Teachers.ToList(), "Teacher_Id", "Teacher_Id");
             ViewData["teacherId"] = teacherId;
+
+            ViewBag.DepartureTime = db.FieldTrips.Find(id).DepartureTime.Value.ToShortTimeString();
+            ViewBag.ReturnTime = db.FieldTrips.Find(id).ReturnTime.Value.ToShortTimeString();
+            ViewBag.ChapperoneArrivalTime = db.FieldTrips.Find(id).ChapperoneArrivalTime.Value.ToShortTimeString();
 
             return View(db.FieldTrips.Find(id));
         }
@@ -122,8 +136,8 @@ namespace Rilke_Schule_Student_Management.Controllers
 
             // Queryable list of Guardianships with a matching username and to the user in session.
             var studentId = from m in db.Guardianships
-                       where m.Parent.Id == userId
-                       select m.Student_Number;
+                            where m.Parent.Id == userId
+                            select m.Student_Number;
             
             var students = from s in db.Students
                            where studentId.Contains(s.Student_Number)
@@ -139,6 +153,14 @@ namespace Rilke_Schule_Student_Management.Controllers
         {
             int tripId = Request.Form["fieldTripId"].AsInt();
             int studentId = Request.Form["studentId"].AsInt();
+            string teacherId = db.FieldTrips.Find(tripId).Teacher_Id;
+
+            var classIdList = from c in db.Classes
+                              where c.Student_Number == studentId && teacherId.Equals(c.Teacher_Id)
+                              select c.Class_Id;
+
+            int classId = classIdList.First();
+
             ViewBag.trip = db.FieldTrips.Find(tripId);
             ViewBag.SubmitByDate = db.FieldTrips.Find(tripId).SubmitByDate.Value.ToLongDateString();
             ViewBag.TripDate = db.FieldTrips.Find(tripId).TripDate.Value.Date.ToLongDateString();
@@ -147,7 +169,7 @@ namespace Rilke_Schule_Student_Management.Controllers
             ViewBag.ChaperoneCost = db.FieldTrips.Find(tripId).ChapperoneCost;
             ViewBag.ReturnTime = db.FieldTrips.Find(tripId).ReturnTime.Value.ToShortTimeString();
             ViewBag.tripId = tripId;
-            ViewBag.studentId = studentId;
+            ViewBag.classId = classId;
             ViewBag.studentName = db.Students.Find(studentId).Stud_F_Name + " " + db.Students.Find(studentId).Stud_L_Name;
             ViewBag.UserId = User.Identity.GetUserId();
 
