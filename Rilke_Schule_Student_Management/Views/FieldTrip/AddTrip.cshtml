@@ -6,6 +6,10 @@
 
 <h2>@ViewBag.Title</h2>
 
+<p>
+    @Html.ActionLink("Back", "FieldTripManager")
+</p>
+
 <!--------TO DO: make the tags "Html.TextBoxFor" to reflect fields representing Times and Dates for appropriate fields---->
 
 @using (Html.BeginForm("AddTrip", "FieldTrip", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
