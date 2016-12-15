@@ -91,7 +91,8 @@ namespace Rilke_Schule_Student_Management.Models
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [RegularExpression(@"^(?=.{6,})(?=.*[a-z])(?=.*[0-9]).*$",
+        ErrorMessage = "Password must contain at least 6 characters and a number")]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
